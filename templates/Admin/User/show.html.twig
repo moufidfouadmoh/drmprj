@@ -1,0 +1,49 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.affectation.add',{
+                    'slug' : user.slug
+                }) }}">
+                    {{ 'app.user.mute.title'|trans }}
+                    <i class="fa fa-rotate-270" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.situation.add',{
+                    'slug':user.slug
+                }) }}">
+                    {{ 'app.user.situate.title'|trans }}
+                    <i class="fa fa-rotate-270" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.cadrage.add',{
+                    'slug':user.slug
+                }) }}">
+                    {{ 'app.user.cadrate.title'|trans }}
+                    <i class="fa fa-rotate-270" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.classement.add',{
+                    'slug':user.slug
+                }) }}">
+                    {{ 'app.user.classify.title'|trans }}
+                    <i class="fa fa-rotate-270" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.user.edit',{
+                    'slug':user.slug
+                }) }}">
+                    {{ 'edit.title'|trans }}
+                    <i class="fa fa-edit" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-white btn-sm pull-right" href="{{ path('native.admin.user.pdf.user',{
+                    'slug':user.slug
+                }) }}">
+                    <span class="text-danger">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            {% include 'Admin/User/includes/profile.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

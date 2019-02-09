@@ -1,0 +1,96 @@
+{% extends 'Global/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('native.admin.user.show',{
+                    'slug':situation.user.slug
+                }) }}" class="btn btn-primary btn-rounded">
+                    {{ 'app.profil.owner'|trans({
+                        '%user%' : situation.user | nom_prenom
+                    }) }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        {{ 'app.situation.show.title'|trans({
+                            '%user%': situation.user | nom_prenom
+                        }) }}
+                    </h5>
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover record_properties">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{ 'app.situation.show.fields.user'| trans }}</th>
+                                        <td>{{ situation.user|nom_prenom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ 'app.situation.show.fields.statut' | trans }}</th>
+                                        <td>{{ situation.statut.nom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ 'app.situation.show.fields.date' | trans }}</th>
+                                        <td>{{ situation.date|localizeddate('long','none','fr') }}</td>
+                                    </tr>
+                                    {% if situation.reference %}
+                                        <tr>
+                                            <th scope="row">{{ 'app.situation.show.fields.reference' | trans }}</th>
+                                            <td>{{ situation.reference }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if situation.detail %}
+                                        <tr>
+                                            <th scope="row">{{ 'app.situation.show.fields.detail' | trans }}</th>
+                                            <td>{{ froala_display(situation.detail) }}</td>
+                                        </tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-sm btn-default btn-rounded pull-right" href="{{ path('native.admin.situation.edit',{
+                            'slug':situation.slug
+                        }) }}">
+                            {{ 'edit.title'| trans }}
+                        </a>
+                        <a class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#modal_delete_situation_{{ situation.id }}">
+                            {{ 'delete.title'|trans }}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <div class="modal fade" id="modal_delete_situation_{{ situation.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_situation_{{ situation.id }}Title" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_situation_{{ situation.id }}Title">
+                                            {{ 'app.situation.delete.modal.header'|trans }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% set delete_form = form_delete(situation.id,'native.admin.situation.delete') %}
+                                    {{ form_start(delete_form) }}
+                                    <div class="modal-body mx-3">
+                                        {{ confirm_delete('app.situation.delete.modal.entity' | trans({},'messages'), '') }}
+                                        {{ form_widget(delete_form) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-sm btn-danger btn-rounded delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                    </div>
+                                    {{ form_end(delete_form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

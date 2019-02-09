@@ -1,0 +1,116 @@
+{% block collection_widget %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_widget(prototype)}) %}
+            {% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+        {% endif %}
+        {% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+        {% set attr = attr|merge({'data-allow-remove': allow_delete ? 1 : 0 }) %}
+        {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+
+        <fieldset>
+            <table {{ block('widget_attributes') }} class="table-striped">
+                {{ form_label(form) }}
+
+                <tbody>
+                {% for item in form %}
+                    {{ form_widget(item) }}
+                {% endfor %}
+                </tbody>
+            </table>
+        </fieldset>
+
+    {% endspaceless %}
+{% endblock %}
+{% block inventaire_informatique_form_widget %}
+    <tr {{ block('widget_attributes') }}>
+        <td>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.etat) }}
+                        <br>
+                        {% for child in form.etat %}
+                            <div class="custom-control custom-radio custom-control-inline">
+                                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                                {{ form_label(child,null,{
+                                    'label_attr' : {
+                                        'class' : 'custom-control-label'
+                                    }
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.cas) }}
+                        <br>
+                        {% for child in form.cas %}
+                            <div class="custom-control custom-radio custom-control-inline">
+                                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                                {{ form_label(child,null,{
+                                    'label_attr' : {
+                                        'class' : 'custom-control-label'
+                                    }
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.bureau) }}
+                        {{ form_widget(form.bureau,{
+                            'attr' : {
+                                'class' : 'form-control chosen-select',
+                                'data-placeholder' : 'app.inventaire.forms.fields.bureau.placeholder'|trans
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.materielInformatique) }}
+                        {{ form_widget(form.materielInformatique,{
+                            'attr' : {
+                                'class' : 'form-control chosen-select',
+                                'data-placeholder' : 'app.inventaire.forms.fields.materiel.placeholder'|trans
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_widget(form.quantite,{
+                            'attr' : {
+                                'class' : 'form-control'
+                            }
+                        }) }}
+                        {{ form_label(form.quantite) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_label(form.detail) }}
+                        {{ form_widget(form.detail) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-">
+                    <a href="#" class="collection-remove btn btn-danger btn-sm" title="{{ 'delete.title' | trans }}">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                    <a href="#" class="collection-add btn btn-default btn-sm" title="{{ 'add.title' | trans }}">
+                        <span class="fa fa-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-primary btn-rounded pull-left" href="{{ path('native.admin.patrimoine.mobilier.add') }}">
+                    <i class="fa fa-plus"></i>
+                    {{ 'app.patrimoine.add'|trans }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ sg_datatables_render(datatable) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

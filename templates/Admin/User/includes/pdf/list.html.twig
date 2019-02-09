@@ -1,0 +1,29 @@
+{% extends 'Print/base.html.twig' %}
+{% block body %}
+    <main class="mt-2 pt-2">
+        <div class="container">
+            <div class="row">
+                <table class="table table-bordered" cellspacing="0" width="100%" role="grid" style="width: 100%;">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ 'app.user.table.fields.username'|trans }}</th>
+                        <th>{{ 'app.user.table.fields.nom_complet'|trans }}</th>
+                        <th>{{ 'app.user.table.fields.sexe'|trans }}</th>
+                        <th>{{ 'app.user.table.fields.age'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in list %}
+                        <tr role="row">
+                            <td>{{ user.username }}</td>
+                            <td>{{ user | nom_prenom }}</td>
+                            <td>{{ user.sexe|sexe }}</td>
+                            <td>{{ user.datenaissance|age }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}

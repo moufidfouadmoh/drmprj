@@ -1,0 +1,4 @@
+{% for bureau in intervention.bureaus %}
+{{ bureau.nom }}{% if not loop.last %},{% endif %}
+{% else %}
+{% endfor %}

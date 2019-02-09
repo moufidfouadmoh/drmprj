@@ -1,0 +1,55 @@
+<div class="md-form mb-5">
+    {{ form_widget(form.datedebut, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.datedebut) }}
+</div>
+{% if form.delaiaccorde is defined %}
+    <div class="form-row">
+        {{ form_label(form.delaiaccorde,null,{
+            'label_attr' : {
+                'class' : 'pt-4'
+            }
+        }) }}
+        <br>
+        {% for child in form.delaiaccorde %}
+            <div class="form-group mb-5 mx-2">
+                {{ form_label(child,null,{
+                    'label_attr':{
+                        'class':'col-control-label'
+                    }
+                }) }}
+                {{ form_widget(child,{
+                    'attr':{
+                        'class':'form-control'
+                    }
+                }) }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if form.annee is defined %}
+    <div class="form-row mb-5">
+        {{ form_label(form.annee,null,{
+            'label_attr':{
+                'class':'col-control-label'
+            }
+        }) }}
+        {{ form_widget(form.annee,{
+            'attr':{
+                'class':'form-control'
+            }
+        }) }}
+    </div>
+{% endif %}
+{% if form.motif is defined %}
+    <div class="form-row mb-5">
+        {{ form_label(form.motif) }}
+        {{ form_widget(form.motif) }}
+    </div>
+{% endif %}
+

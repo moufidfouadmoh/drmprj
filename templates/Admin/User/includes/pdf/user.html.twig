@@ -1,0 +1,300 @@
+{% extends 'Print/base.html.twig' %}
+{% block body %}
+    <section>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ base_dir ~ asset('ct.png') }}" height="40px" />
+            </div>
+            <div class="col-md-10">
+                <h1 class="text-center">
+                    UNION DES COMORES
+                </h1>
+                <p class="text-center">
+                    <strong>
+                        Unité - Solidarité - Développement
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">
+                    Société Nationale des Télécommunications
+                </h2>
+                <p class="text-center">
+                    <strong>
+                        COMORES TELECOM
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">
+                    <strong>
+                    <span style="text-decoration:underline;">
+                        Direction Régionale de Mohéli
+                    </span>
+                    </strong>
+                </h3>
+                <br>
+                <h4>
+                    <strong>
+                        Département administratif et financier
+                    </strong>
+                </h4>
+                <p>
+                    <strong  style="text-decoration:underline;">
+                        <tab2>
+                            Service Personnel et Affaires juridiques
+                        </tab2>
+                    </strong>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="pt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center">
+                    <strong>
+                        FICHE INDIVIDUELLE DE CARRIERE
+                    </strong>
+                </h4>
+            </div>
+        </div>
+    </section>
+    <section class="pt-5">
+        <div class="row">
+            <h4 class="text-center">
+                <strong>
+                    IDENTIFICATION
+                </strong>
+            </h4>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <table class="table table-condensed">
+                    <tbody>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.username' | trans }}
+                        </th>
+                        <td>
+                            {{ user.username }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.nom' | trans }}
+                        </th>
+                        <td>
+                            {{ user.nom }}
+                        </td>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.prenom' | trans }}
+                        </th>
+                        <td>
+                            {{ user.prenom }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.dldn' | trans }}
+                        </th>
+                        <td>
+                            {{ user.datenaissance | date('d/m/Y') }}
+                            {{ 'to' | trans }}
+                            <b>{{ user.lieunaissance }}</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.date_recrutement' | trans }}
+                        </th>
+                        <td>
+                            {% if user.daterecrutement is not null %}
+                                {{ user.daterecrutement | date('d/m/Y') }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b>{{ 'app.user.show.tabs.base.fields.groupe' | trans }}</b>
+                            <tab1>
+                                {{ user.currentgroupe }}
+                            </tab1>
+                        </td>
+                        <td>
+                            <b>{{ 'app.user.show.tabs.base.fields.categorie' | trans }}</b>
+
+                            <tab1>
+                                {{ user.currentniveau }}
+                            </tab1>
+                        </td>
+                        <td>
+                            <b>{{ 'app.user.show.tabs.base.fields.echelon' | trans }}</b>
+
+                            <tab1>
+                                {{ user.currentechelon }}
+                            </tab1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.bureau' | trans }}
+                        </th>
+                        <td>
+                            {% if user.currentBureau %}{{ user.currentBureau.nom }}{% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.fonction' | trans }}
+                        </th>
+                        <td>
+                            {% if user.currentFonction %}{{ user.currentFonction.nom }}{% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.phones' | trans }}
+                        </th>
+                        <td>
+                            {{ user.telephone1 }}
+                        </td>
+                        <th>
+                            {{ 'app.user.show.tabs.base.fields.agence' | trans }}
+                        </th>
+                        <td>
+                            {% if user.currentAgence %}{{ user.currentAgence.nom }}{% endif %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-3">
+        {% if user.formations is not empty %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">
+                        <strong>
+                            {{ 'Formations et qualifications' | upper}}
+                        </strong>
+                    </h4>
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>
+                                Date d'obtention
+                            </th>
+                            <th>
+                                Intitulé de la formation
+                            </th>
+                            <th>
+                                Etablissement
+                            </th>
+                            <th>
+                                Niveau de qualification
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for formation in user.formations | sortbyfield('date')%}
+                            <tr>
+                                <td>
+                                    {{ formation.date | date('d/m/Y') }}
+                                </td>
+                                <td>
+                                    {{ formation.cours.nom }}
+                                </td>
+                                <td>
+                                    {{ formation.adresse.etablissement.nom }}
+                                    <br>
+                                    {{ 'to' | trans }}
+                                    {{ formation.adresse.ville }} /
+                                    {{ formation.adresse.pays.nom | country }}
+                                </td>
+                                <td>
+                                    {{ formation.diplome.nom }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <section class="pt-3">
+        {% if user.affectations is not empty %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">
+                        <strong>
+                            {{ 'Fonctions occupées' | upper}}
+                        </strong>
+                    </h4>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>
+                                Postes occupés
+                            </th>
+                            <th>
+                                Direction / Départ/ Service
+                            </th>
+                            <th>
+                                Date de prise d'effet
+                            </th>
+                            <th>
+                                Réf .Décision
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for affectation in user.affectations | sortbyfield('date','desc') %}
+                            <tr>
+                                <td>
+                                    {% if affectation.fonctionDest %}
+                                        {{ affectation.fonctionDest.nom }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if affectation.bureauDest %}
+                                        {{ affectation.bureauDest.nom }} / {{ affectation.agenceDest.nom }}
+                                    {% else %}
+                                        {{ affectation.agenceDest.nom }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ affectation.date | date('d-m-Y') }}
+                                </td>
+                                <td>
+                                    {{ affectation.reference }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<div class="md-form mb-5">
+    {{ form_widget(form.nom, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.nom) }}
+</div>
+
+<div class="form-group mb-5">
+    {{ form_label(form.ile) }}
+        <br>
+    {% for child in form.ile %}
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+            {{ form_label(child,null,{
+                'label_attr' : {
+                    'class' : 'custom-control-label'
+                }
+            }) }}
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+

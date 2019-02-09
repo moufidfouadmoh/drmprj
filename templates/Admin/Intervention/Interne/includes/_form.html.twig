@@ -1,0 +1,81 @@
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.date, {
+                'attr' : {
+                    'required' : 'required',
+                    'class' : 'form-control'
+                }
+            }) }}
+            {{ form_label(form.date) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.users) }}
+            {{ form_widget(form.users,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.intervention.forms.fields.users.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.probleme, {
+                'attr' : {
+                    'required' : 'required',
+                    'class' : 'form-control',
+                    'autocomplete':'off'
+                }
+            }) }}
+            {{ form_label(form.probleme) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.solution, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete':'off'
+                }
+            }) }}
+            {{ form_label(form.solution) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.bureaus) }}
+            {{ form_widget(form.bureaus,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.intervention.forms.fields.bureaus.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.materielInformatiques) }}
+            {{ form_widget(form.materielInformatiques,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.intervention.forms.fields.materiels.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.detail) }}
+            {{ form_widget(form.detail) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ sg_datatables_render(datatable) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

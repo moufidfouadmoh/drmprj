@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.address, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(search.address) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.bureaus, {
+                'attr' : {
+                    'data-placeholder' : 'app.ip.search.fields.bureaus'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.agences, {
+                'attr' : {
+                    'data-placeholder' : 'app.ip.search.fields.agences'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>

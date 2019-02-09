@@ -1,0 +1,59 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <section class="details-card">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-1">
+                    {#<h1 class="my-4">Page Heading
+                        <small>Secondary Text</small>
+                    </h1>#}
+
+                    {% for article in pagination %}
+                    <div class="card mb-4">
+                        <div class="card-img">
+                            <img src="{{ asset('ct.png') }}" alt="">
+                        </div>
+                        <div class="card-body collapse-group">
+                            <h2 class="card-title text-center text-capitalize">{{ article.title }}</h2>
+                            <article class="collapse" id="viewdetails{{ article.id }}">
+                                {{ froala_display(article.content) }}
+                            </article>
+                            <p>
+                                <a
+                                        class="btn btn-outline-primary see"
+                                        data-toggle="collapse"
+                                        data-target="#viewdetails{{ article.id }}">
+                                    {{ 'See More' | trans }} &raquo;
+                                </a>
+                            </p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            {{ 'app.article.show.fields.date.posted'| trans }}: {{ article.updatedAt | localizeddate('full', 'none', 'fr' ) | ucfirst }} {{ 'by' |trans }}
+                            <a href="#">{{ article.user | nom_prenom }}</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Pagination -->
+                    <ul class="pagination justify-content-center mb-4">
+                        {{ knp_pagination_render(pagination) }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.see').click(function(){
+                var $this = $(this);
+                $this.toggleClass('see');
+                if($this.hasClass('see')){
+                    $this.text("{{ 'See More' | trans }}");
+                } else {
+                    $this.text("{{ 'See Less' | trans }}");
+                }
+            });
+        });
+    </script>
+{% endblock %}

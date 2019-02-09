@@ -1,0 +1,119 @@
+{% extends 'Global/base.html.twig' %}
+            {%
+                form_theme form
+                'Admin/User/includes/themes/formations.theme.html.twig'
+
+            %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/bootstrap-datetimepicker.min.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% include 'Admin/User/includes/_form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/moment.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/fr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/jquery.collection.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bloodhound.jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/typeahead.jquery.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var etablissements = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: "{{ path('search_etablissement') }}/%QUERY%",
+                    wildcard: "%QUERY%"
+                }
+            });
+            etablissements.initialize();
+
+            var cours = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: "{{ path('search_cours') }}/%QUERY%",
+                    wildcard: "%QUERY%"
+                }
+            });
+            cours.initialize();
+
+            var diplomes = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: "{{ path('search_diplome') }}/%QUERY%",
+                    wildcard: "%QUERY%"
+                }
+            });
+            diplomes.initialize();
+
+            $('#user_form_roles').chosen({
+
+            });
+            $('#user_form_datenaissance').datetimepicker({
+                locale: 'fr',
+                format: 'L'
+            });
+            $('.formation-collection').collection({
+                allow_duplicate: false,
+                allow_up: false,
+                allow_down: false,
+                add: '<a href="#" class="btn btn-default btn-sm" title="{{ 'add.title' | trans }}"><span class="fa fa-plus"></span></a>',
+                after_add: function(collection,element) {
+                    $('.chosen-select',element).chosen();
+                    $('.js-datepicker',element).datetimepicker({
+                        locale: 'fr',
+                        format: 'L'
+                    });
+
+                    $('.etablissementahead',element).typeahead({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1
+                    },{
+                        name: 'etablissements',
+                        source: etablissements.ttAdapter(),
+                        display: 'nom'
+                    });
+
+                    $('.coursahead',element).typeahead({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1
+                    },{
+                        name: 'cours',
+                        source: cours.ttAdapter(),
+                        display: 'nom'
+                    });
+
+                    $('.diplomeahead',element).typeahead({
+                        hint: true,
+                        highlight: true,
+                        minLength: 1
+                    },{
+                        name: 'diplomes',
+                        source: diplomes.ttAdapter(),
+                        display: 'nom'
+                    });
+
+                },
+                elements_selector: 'tr.item',
+                elements_parent_selector: '%id% tbody'
+            });
+
+
+        });
+    </script>
+{% endblock %}

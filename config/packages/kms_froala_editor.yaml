@@ -1,0 +1,12 @@
+kms_froala_editor:
+    #language: '%locale%'
+    language: 'fr'
+    #serialNumber: "XXXX-XXXX-XXXX"
+    includeJQuery: false
+    includeCodeMirror: false
+    includeFontAwesome: false
+    includeJS: false
+    includeCSS: false
+    imageUploadFolder: 'uploads/froala/images'
+    fileUploadFolder: 'uploads/froala/files'
+    publicDir: "/public"

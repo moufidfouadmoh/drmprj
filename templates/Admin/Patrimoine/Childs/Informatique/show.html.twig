@@ -1,0 +1,109 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        {{ 'app.patrimoine.show.title'|trans }}
+                    </h5>
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover record_properties">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">{{ 'app.patrimoine.show.fields.date'| trans }}</th>
+                                    <td>{{ 'the' | trans | ucfirst }} {{ patrimoine.date | localizeddate('full', 'none', 'fr' ) }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'app.patrimoine.show.fields.owner' | trans }}</th>
+                                    <td>{{ patrimoine.user | nom_prenom }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-hover record_properties">
+                                <thead>
+                                <tr>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.materiel' | trans }}</th>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.marque' | trans }}</th>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.quantite' | trans }}</th>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.bureau' | trans }}</th>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.etat' | trans }}</th>
+                                    <th>{{ 'app.patrimoine.show.fields.listing.cas' | trans }}</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for inventaire in patrimoine.inventaires %}
+                                    <tr>
+                                        <td>
+                                            {{ inventaire.materielInformatique.equipement.nom }}
+                                        </td>
+                                        <td>
+                                            {{ inventaire.materielInformatique.marque.nom }}
+                                        </td>
+                                        <td>
+                                            {{ inventaire.quantite }} {{ inventaire.materielInformatique.unite | unite_mesure }}
+                                        </td>
+                                        <td>
+                                            {{ inventaire.bureau.nom }}
+                                        </td>
+                                        <td>
+                                            {{ inventaire.etat | inventaire }}
+                                        </td>
+                                        <td>
+                                            {{ inventaire.cas | inventaire }}
+                                        </td>
+                                        <td>
+                                            {% if inventaire.detail %}
+                                                {{ froala_display(inventaire.detail) }}
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-sm btn-default btn-rounded pull-right" href="{{ path('native.admin.patrimoine.informatique.edit',{
+                            'slug':patrimoine.slug
+                        }) }}">
+                            {{ 'edit.title'| trans }}
+                        </a>
+                        <a class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#modal_delete_patrimoine_{{ patrimoine.id }}">
+                            {{ 'delete.title'|trans }}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <div class="modal fade" id="modal_delete_patrimoine_{{ patrimoine.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_patrimoine_{{ patrimoine.id }}Title" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_patrimoine_{{ patrimoine.id }}Title">
+                                            {{ 'app.patrimoine.delete.modal.header'|trans }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% set delete_form = form_delete(patrimoine.id,'native.admin.patrimoine.informatique.delete') %}
+                                    {{ form_start(delete_form) }}
+                                    <div class="modal-body mx-3">
+                                        {{ confirm_delete('app.patrimoine.delete.modal.entity' | trans({},'messages'),'') }}
+                                        {{ form_widget(delete_form) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-sm btn-danger btn-rounded delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                    </div>
+                                    {{ form_end(delete_form) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

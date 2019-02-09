@@ -1,0 +1,24 @@
+{
+  "entrypoints": {
+    "css/app": {
+      "css": [
+        "build/css/app.css"
+      ]
+    },
+    "css/bootstrap": {
+      "css": [
+        "build/css/bootstrap.css"
+      ]
+    },
+    "css/login": {
+      "css": [
+        "build/css/login.css"
+      ]
+    },
+    "froala/css/froala": {
+      "css": [
+        "build/froala/css/froala.css"
+      ]
+    }
+  }
+}

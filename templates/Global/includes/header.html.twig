@@ -1,0 +1,292 @@
+<!--Main Navigation-->
+<header>
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+        <div class="container">
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="{{ path('native.index') }}">
+                <strong>{{ 'app.homepage'|trans }}</strong>
+            </a>
+
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    {% if is_granted('ROLE_ADMIN_CONGE') or is_granted('ROLE_ADMIN_PERSONNEL') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownPersonnel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'app.header.personnel.title'|trans }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownPersonnel">
+                                {% if is_granted('ROLE_ADMIN_PERSONNEL') %}
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item">
+                                        {{ 'app.header.personnel.submenu.agent.title'|trans }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.user.add') }}">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.agent.add'|trans }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.user.index') }}">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.agent.list'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.affectation.index') }}">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.affectation.list'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.situation.index') }}">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.situation.list'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.cadrage.list'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.classement.index') }}">
+                                                {{ 'app.header.personnel.submenu.agent.submenu.classement.list'|trans }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                                {% if is_granted('ROLE_ADMIN_CONGE') %}
+                                <li class="dropdown-divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item">
+                                        {{ 'app.header.personnel.submenu.conge.title'|trans }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.consommation.check') }}">
+                                                {{ 'app.header.personnel.submenu.conge.submenu.add'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.consommation.index') }}">
+                                                {{ 'app.header.personnel.submenu.conge.submenu.consommation.all'|trans }}
+                                            </a>
+                                        </li>
+                                        <li class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.modele.index') }}">
+                                                {{ 'app.header.personnel.submenu.conge.submenu.modele'|trans }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                                <li class="dropdown-divider"></li>
+                                {% if is_granted('ROLE_ADMIN_PERSONNEL') %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.statut.index') }}">
+                                        {{ 'app.header.personnel.submenu.statut.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.categorie.index') }}">
+                                        {{ 'app.header.personnel.submenu.categorie.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.fonction.index') }}">
+                                        {{ 'app.header.personnel.submenu.fonction.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.bureau.index') }}">
+                                        {{ 'app.header.personnel.submenu.bureau.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.agence.index') }}">
+                                        {{ 'app.header.personnel.submenu.agence.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.lieu.index') }}">
+                                        {{ 'app.header.personnel.submenu.lieu.title'|trans }}
+                                    </a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item">
+                                        {{ 'app.header.personnel.submenu.article.title'|trans }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.article.add') }}">
+                                                {{ 'app.header.personnel.submenu.article.submenu.add'|trans }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ path('native.admin.article.index') }}">
+                                                {{ 'app.header.personnel.submenu.article.submenu.list'|trans }}
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN_MATERIEL_INFORMATIQUE') or is_granted('ROLE_ADMIN_MATERIEL_MOBILIER') %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownMateriel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ 'app.header.materiel.title'|trans }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMateriel">
+                                {% if is_granted('ROLE_ADMIN_MATERIEL_INFORMATIQUE') %}
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item">
+                                            {{ 'app.header.materiel.submenu.informatique.title'|trans }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.materiel.informatique.index') }}">
+                                                    {{ 'app.header.materiel.submenu.informatique.submenu.materiel.list'|trans }}
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.patrimoine.informatique.add') }}">
+                                                    {{ 'app.header.materiel.submenu.informatique.submenu.inventaire.add'|trans }}
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.patrimoine.informatique.index') }}">
+                                                    {{ 'app.header.materiel.submenu.informatique.submenu.inventaire.list'|trans }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                                {% if is_granted('ROLE_ADMIN_MATERIEL_MOBILIER') %}
+                                    <li class="dropdown-submenu">
+                                        <a class="dropdown-item">
+                                            {{ 'app.header.materiel.submenu.mobilier.title'|trans }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.materiel.mobilier.index') }}">
+                                                    {{ 'app.header.materiel.submenu.mobilier.submenu.materiel.list'|trans }}
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.patrimoine.mobilier.add') }}">
+                                                    {{ 'app.header.materiel.submenu.mobilier.submenu.inventaire.add'|trans }}
+                                                </a>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ path('native.admin.patrimoine.mobilier.index') }}">
+                                                    {{ 'app.header.materiel.submenu.mobilier.submenu.inventaire.list'|trans }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN_INTERVENTION_INTERNE') or is_granted('ROLE_ADMIN_INTERVENTION_EXTERNE') or is_granted('ROLE_ADMIN_IP')%}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="dropdownTechnique" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Travaux techniques
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownTechnique">
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item">
+                                        Gestion des interventions
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        {% if is_granted('ROLE_ADMIN_INTERVENTION_INTERNE') %}
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-item">
+                                                Les interventions internes
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('native.admin.intervention.interne.add') }}">
+                                                        Ajouter une intervention
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('native.admin.intervention.interne.index') }}">
+                                                        Lister les interventions
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_ADMIN_INTERVENTION_EXTERNE') %}
+                                        <li class="dropdown-divider"></li>
+                                        <li class="dropdown-submenu">
+                                            <a class="dropdown-item">
+                                                Les interventions externes
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('native.admin.intervention.externe.add') }}">
+                                                        Ajouter une intervention
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ path('native.admin.intervention.externe.index') }}">
+                                                        Lister les interventions
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                {% if is_granted('ROLE_ADMIN_IP') %}
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('native.admin.ip.index') }}">
+                                        Gestion des adresses ip
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+                {{ navbar_left(app.user) }}
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+
+
+</header>
+<!--Main Navigation-->

@@ -1,0 +1,50 @@
+{% extends 'Global/base.html.twig' %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                {{ form_start(form,{
+                    'attr':{
+
+                    }
+                }) }}
+                <div class="form-group">
+                    {{ form_widget(form.user,{
+                        'attr':{
+                            'class':'form-control form-control-lg',
+                            'data-placeholder': 'app.cconsommation.forms.fields.user.placeholder'|trans
+                        }
+                    }) }}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-lg btn-block">
+                        {{ 'check'|trans }}
+                    </button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <div class="row justify-content-center mb-5">
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <span class="{{ type }}">
+                        {{ message }}
+                    </span>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#c_consommation_form_user').chosen({
+
+            });
+        });
+    </script>
+{% endblock %}

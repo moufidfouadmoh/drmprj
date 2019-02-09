@@ -1,0 +1,5 @@
+{% if lieu.agences is not empty %}
+    {% for agence in lieu.agences %}
+        {{ agence.nom }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+{% endif %}

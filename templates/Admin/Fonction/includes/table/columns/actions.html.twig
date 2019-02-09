@@ -1,0 +1,36 @@
+<a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.fonction.edit',{
+    'slug' : fonction.slug
+}) }}">
+    {{ 'edit.title'|trans }}
+    <i class="fa fa-edit" aria-hidden="true"></i>
+</a>
+
+<a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_fonction_{{ fonction.id }}">
+    {{ 'delete.title'|trans }}
+    <i class="fa fa-trash" aria-hidden="true"></i>
+</a>
+<div class="modal fade" id="modal_delete_fonction_{{ fonction.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_fonction_{{ fonction.id }}Title" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_fonction_{{ fonction.id }}Title">
+                    {{ 'app.fonction.delete.modal.header'|trans }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% set delete_form = form_delete(fonction.id,'native.admin.fonction.delete') %}
+            {{ form_start(delete_form) }}
+            <div class="modal-body mx-3">
+                {{ confirm_delete('app.fonction.delete.modal.entity' | trans({},'messages'), fonction.nom) }}
+                {{ form_widget(delete_form) }}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-danger">{{ 'accept'|trans({},'messages') }}</button>
+                <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+            </div>
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+</div>

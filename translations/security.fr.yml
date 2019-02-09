@@ -1,0 +1,43 @@
+login:
+    title: "Connexion"
+    username: "Matricule"
+    password: "Mot de passe"
+    error:
+        enabling: "Ce compte n'est pas activé. Désolé!"
+    submit: "Connexion"
+
+
+resetting:
+    title: "Réinitialisation de mot de passe"
+    suggest:
+        question:  "Mot de passe oublié?"
+        instruction: "Réinitialisez votre mot de passe en renseignant votre email."
+        login: "Se connecter"
+    request:
+        result:
+            warning: "Cet email n'existe pas."
+            success: "Un mail va vous être envoyé afin que vous puissiez renouveller votre mot de passe. Le lien que vous recevrez sera valide 24h."
+    process:
+        success: "Votre mot de passe a été renouvelé."
+        mail:
+            subject: "Renouvellement du mot de passe"
+    email: "Email"
+    submit: "Soumettre"
+
+password:
+    change:
+        title: "Changer le mot de passe"
+        fields:
+            old:
+                label: "Mot de passe courant"
+                placeholder: "Mot de passe courant"
+            new:
+                label: "Nouveau mot de passe"
+                placeholder: "Nouveau mot de passe"
+            repeated:
+                label: "Confirmation"
+                placeholder: "Confirmer le nouveau mot de passe"
+
+        success: "Mot de passe changé avec succès"
+logout:
+    title: "Déconnexion"

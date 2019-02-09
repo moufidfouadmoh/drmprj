@@ -1,0 +1,16 @@
+{{form_start(form)}}
+    <div class="form-group">
+        {{form_widget(form.email,{
+            'attr':{
+                'required': 'required',
+                'class': 'form-control',
+                'autocomplete': 'off',
+                'placeholder': 'resetting.email'|trans({},'security')
+            }
+        })}}
+    </div>
+    <button type="submit" id="_submit" name="_submit" class="btn btn-login">
+        {{ 'resetting.submit'|trans({},'security') }}
+    </button>
+{{form_end(form)}}
+

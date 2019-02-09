@@ -1,0 +1,39 @@
+<div class="md-form mb-5">
+    {{ form_widget(form.nom, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.nom) }}
+</div>
+<div class="md-form mb-5">
+    {{ form_widget(form.telephone, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.telephone) }}
+</div>
+<div class="form-group mb-5">
+    {{ form_label(form.services) }}
+    {{ form_widget(form.services, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.departement.forms.fields.services.placeholder'|trans
+        }
+    }) }}
+</div>
+<div class="form-group mb-5">
+    {{ form_label(form.agences) }}
+    {{ form_widget(form.agences, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.departement.forms.fields.agences.placeholder'|trans
+        }
+    }) }}
+</div>
+

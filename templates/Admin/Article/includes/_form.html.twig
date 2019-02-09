@@ -1,0 +1,23 @@
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.title,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(form.title) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content) }}
+        </div>
+    </div>
+</div>
+
+

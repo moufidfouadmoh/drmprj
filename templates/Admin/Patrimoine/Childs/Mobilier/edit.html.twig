@@ -1,0 +1,53 @@
+{% extends 'Global/base.html.twig' %}
+            {%
+                form_theme form
+                'Admin/Patrimoine/Childs/Mobilier/includes/themes/inventaires.theme.html.twig'
+
+            %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/css/froala_editor.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/css/plugins/file.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% include 'Admin/Patrimoine/Childs/Mobilier/includes/_form.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/moment.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/fr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/jquery.collection.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/froala_editor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/languages/fr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/plugins/file.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/plugins/lists.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#patrimoine_mobilier_form_date').datetimepicker({
+                locale: 'fr',
+                format: 'L'
+            });
+
+            $('.inventaire-collection').collection({
+                allow_duplicate: false,
+                allow_up: false,
+                allow_down: false,
+                add: '<a href="#" class="btn btn-default btn-sm" title="{{ 'add.title' | trans }}"><span class="fa fa-plus"></span></a>',
+                after_add: function(collection,element) {
+                    $('.chosen-select',element).chosen();
+                },
+                elements_selector: 'tr.item',
+                elements_parent_selector: '%id% tbody'
+            });
+
+        })
+    </script>
+{% endblock %}

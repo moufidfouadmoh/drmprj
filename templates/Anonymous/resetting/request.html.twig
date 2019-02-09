@@ -1,0 +1,36 @@
+{% extends 'Anonymous/base.html.twig' %}
+{% block title %}{{ 'resetting.title'|trans({},'security') }}{% endblock %}
+{% block body %}
+    <div class="modal-dialog text-center">
+        <div class="col-sm-9 main-section">
+            <div class="modal-content" style="border-radius: 10px;">
+                <div class="col-12 user-img">
+                    <img src="{{ asset('img/face.png') }}" alt="">
+                </div>
+                <div class="col-12 form-input">
+                    <div class="error">
+                        {#<h4>{{ 'resetting.suggest.question'|trans({},'security') }}</h4>#}
+                        {% if app.session.flashBag.has('warning') %}
+                            {% for key,message in app.session.flashBag.get('warning') %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        {% elseif app.session.flashBag.has('success') %}
+                            {% for key,message in app.session.flashBag.get('success') %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        {% else %}
+                            <p>{{ 'resetting.suggest.instruction'|trans({},'security') }}</p>
+                        {% endif %}
+                    </div>
+                    {% include('Anonymous/resetting/request_content.html.twig') %}
+                </div>
+                <div class="col-12 forgot">
+                    <a href="{{ path('security_login') }}">
+                        {{ 'resetting.suggest.login'|trans({},'security') }}
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

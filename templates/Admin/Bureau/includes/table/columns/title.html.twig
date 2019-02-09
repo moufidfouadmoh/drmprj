@@ -1,0 +1,20 @@
+{% if bureau.type == 'direction' %}
+    <a href="{{ path('native.admin.direction.show',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ bureau.nom }}
+    </a>
+
+{% elseif bureau.type == 'departement' %}
+    <a href="{{ path('native.admin.departement.show',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ bureau.nom }}
+    </a>
+{% elseif bureau.type == 'service' %}
+    <a href="{{ path('native.admin.service.show',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ bureau.nom }}
+    </a>
+{% endif %}

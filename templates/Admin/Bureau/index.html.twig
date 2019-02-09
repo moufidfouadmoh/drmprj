@@ -1,0 +1,88 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <!--Section: Cards-->
+        <section class="text-center">
+
+            <!--Grid row-->
+            <div class="row mb-4 wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ 'app.bureau.section.direction.title'|trans }}</h4>
+
+                            <a href="{{ path('native.admin.direction.index') }}" class="btn btn-primary btn-md">
+                                {{ 'access'|trans }}
+                                <i class="fa fa-play ml-2"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ 'app.bureau.section.departement.title'|trans }}</h4>
+                            <a href="{{ path('native.admin.departement.index') }}" class="btn btn-primary btn-md">
+                                {{ 'access'|trans }}
+                                <i class="fa fa-play ml-2"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ 'app.bureau.section.service.title'|trans }}</h4>
+                            <a href="{{ path('native.admin.service.index') }}" class="btn btn-primary btn-md">
+                                {{ 'access'|trans }}
+                                <i class="fa fa-play ml-2"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+        </section>
+        <!--Section: Cards-->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {{ sg_datatables_render(datatable) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

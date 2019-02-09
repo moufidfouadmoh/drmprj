@@ -1,0 +1,608 @@
+<div class="table-responsive">
+    <div class="tabs-container">
+        <div class="tabs-left">
+            <ul class="nav nav-tabs nav-justified md-tabs" id="tab_user_show" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="base-tab-just" data-toggle="tab" href="#base-just" role="tab" aria-controls="base-just" aria-selected="true">
+                        {{ 'app.user.show.tabs.base.label' | trans }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="formation-tab-just" data-toggle="tab" href="#formation-just" role="tab" aria-controls="formation-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.formation.label' | trans | ucfirst }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="situation-tab-just" data-toggle="tab" href="#situation-just" role="tab" aria-controls="situation-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.situation.label' | trans | ucfirst }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="cadrage-tab-just" data-toggle="tab" href="#cadrage-just" role="tab" aria-controls="cadrage-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.cadrage.label' | trans | ucfirst }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="classement-tab-just" data-toggle="tab" href="#classement-just" role="tab" aria-controls="classement-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.classement.label' | trans | ucfirst }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="affectation-tab-just" data-toggle="tab" href="#affectation-just" role="tab" aria-controls="affectation-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.affectation.label' | trans | ucfirst }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="conge-tab-just" data-toggle="tab" href="#conge-just" role="tab" aria-controls="conge-just" aria-selected="false">
+                        {{ 'app.user.show.tabs.conge.label' | trans | ucfirst }}
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content card pt-5" id="tab_user_show">
+                <div class="tab-pane fade show active" id="base-just" role="tabpanel" aria-labelledby="base-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-5">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">{{  'app.user.show.tabs.base.fields.username' | trans }}</th>
+                                            <td>{{ user.username }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.nom' | trans }}</th>
+                                            <td>{{ user.nom }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.prenom' | trans }}</th>
+                                            <td>{{ user.prenom }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.sexe' | trans }}</th>
+                                            <td>{{ user.sexe | sexe }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.dldn' | trans }}</th>
+                                            <td>
+                                                {{ 'the' | trans | ucfirst }} {{ user.datenaissance | localizeddate('full', 'none', 'fr' ) }}
+                                                {% if user.lieunaissance %}
+                                                    {{ 'to' | trans }}
+                                                    {{ user.lieunaissance }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.age' | trans }}</th>
+                                            <td>{{ user.datenaissance | age }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{  'app.user.show.tabs.base.fields.email' | trans }}</th>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{  'app.user.show.tabs.base.fields.phones' | trans }}</th>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        {{ user.telephone1 }}
+                                                    </li>
+                                                    {% if user.telephone2 %}
+                                                        <li>
+                                                            {{ user.telephone2 }}
+                                                        </li>
+                                                    {% endif %}
+                                                    {% if user.telephone3 %}
+                                                        <li>
+                                                            {{ user.telephone3 }}
+                                                        </li>
+                                                    {% endif %}
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-5 offset-2">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        {% if user.currentFonction %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.fonction' | trans }}</th>
+                                                <td>{{ user.currentFonction.nom }}</td>
+                                            </tr>
+                                            {% endif %}
+                                        {% if user.currentBureau %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.bureau' | trans }}</th>
+                                                <td>{{ user.currentBureau.nom }}</td>
+                                            </tr>
+                                            {% endif %}
+                                        {% if user.currentAgence %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.agence' | trans }}</th>
+                                                <td>{{ user.currentAgence.nom }}</td>
+                                            </tr>
+                                            {% endif %}
+                                        {% if user.daterecrutement %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.date_recrutement' | trans }}</th>
+                                                <td>{{ user.daterecrutement | date('d/m/Y') }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.period_embauche' | trans }}</th>
+                                                <td>
+                                                    {{ user | periode_embauche(true) }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.age_retraite' | trans }}</th>
+                                                <td>{{ user | age_retraite }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.date_retraite' | trans }}</th>
+                                                <td>{{ user.dateRetraite() | date('d-m-Y') }}</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if user.currentStatut %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.statut' | trans }}</th>
+                                                <td>{{ user.currentStatut.nom }}</td>
+                                            </tr>
+                                        {% endif %}
+                                        {% if user.currentCategorie %}
+                                            <tr>
+                                                <th scope="row">{{ 'app.user.show.tabs.base.fields.categorie' | trans }}</th>
+                                                <td>{{ user.currentCategorie.nom }}</td>
+                                            </tr>
+                                        {% endif %}
+                                        <tr>
+                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.classe' | trans }}</th>
+                                            <td>
+                                                <ul>
+                                                    <li>
+                                                        Groupe {{ user.currentgroupe }}
+                                                    </li>
+                                                    <li>
+                                                        Niveau {{ user.currentniveau }}
+                                                    </li>
+                                                    <li>
+                                                        Echelon {{ user.currentechelon }}
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="formation-just" role="tabpanel" aria-labelledby="formation-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if user.formations is not empty %}
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        {{ 'app.user.forms.fields.formations.cours'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'app.user.forms.fields.formations.etablissement'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'app.user.forms.fields.formations.diplome'|trans }}
+                                                    </th>
+                                                    <th>
+                                                        {{ 'app.user.forms.fields.formations.date'|trans }}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for formation in user.formations | sortbyfield('date','desc') %}
+                                                <tr>
+                                                    <td>
+                                                        {{ formation.cours.nom }}
+                                                    </td>
+                                                    <td>
+                                                        {{ formation.adresse.etablissement.nom }}
+                                                        <ul>
+                                                            <li>
+                                                                {{ formation.adresse.pays.nom | country }}
+                                                            </li>
+                                                            {% if formation.adresse.ville %}
+                                                                <li>
+                                                                    {{ formation.adresse.ville }}
+                                                                </li>
+                                                            {% endif %}
+                                                            {% if formation.adresse.telephone %}
+                                                                <li>
+                                                                    {{ formation.adresse.telephone }}
+                                                                </li>
+                                                            {% endif %}
+                                                            {% if formation.adresse.email %}
+                                                                <li>
+                                                                    {{ formation.adresse.email }}
+                                                                </li>
+                                                            {% endif %}
+                                                            {% if formation.adresse.postale %}
+                                                                <li>
+                                                                    {{ formation.adresse.postale }}
+                                                                </li>
+                                                            {% endif %}
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        {{ formation.diplome.nom }}
+                                                        <ul>
+                                                            <li>
+                                                                {{ 'mention.title' | trans | ucfirst }} {{ formation.mention | mention }}
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                    <td>
+                                                        {{ formation.date | localizeddate('long','none','fr') }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="situation-just" role="tabpanel" aria-labelledby="situation-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if user.situations is not empty %}
+                                        <table class="table table-hover">
+                                            <tbody>
+                                            {% for situation in user.situations | sortbyfield('date','desc') %}
+                                                <tr>
+                                                    <td>
+                                                        {{ situation.statut.nom }}
+                                                    </td>
+                                                    <td>
+                                                        {{ situation.date | localizeddate('long','none','fr') }}
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.situation.show',{
+                                                            'slug' : situation.slug
+                                                        }) }}">
+                                                            {{ 'show'|trans }}
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.situation.edit',{
+                                                            'slug' : situation.slug
+                                                        }) }}">
+                                                            {{ 'edit.title'|trans }}
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_situation_{{ situation.id }}">
+                                                            {{ 'delete.title'|trans }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                        <div class="modal fade" id="modal_delete_situation_{{ situation.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_situation_{{ situation.id }}Title" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_situation_{{ situation.id }}Title">
+                                                                            {{ 'app.situation.delete.modal.header'|trans }}
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    {% set delete_form = form_delete(situation.id,'native.admin.situation.delete') %}
+                                                                    {{ form_start(delete_form) }}
+                                                                    <div class="modal-body mx-3">
+                                                                        {{ confirm_delete('app.situation.delete.modal.entity' | trans({},'messages'), '') }}
+                                                                        {{ form_widget(delete_form) }}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-sm btn-danger">{{ 'accept'|trans({},'messages') }}</button>
+                                                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                                                    </div>
+                                                                    {{ form_end(delete_form) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="cadrage-just" role="tabpanel" aria-labelledby="cadrage-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if user.cadrages is not empty %}
+                                        <table class="table table-hover">
+                                            <tbody>
+                                            {% for cadrage in user.cadrages | sortbyfield('date','desc') %}
+                                                <tr>
+                                                    <td>
+                                                        {{ cadrage.categorie.nom }}
+                                                    </td>
+                                                    <td>
+                                                        {{ cadrage.date | localizeddate('long','none','fr') }}
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.cadrage.show',{
+                                                            'slug' : cadrage.slug
+                                                        }) }}">
+                                                            {{ 'show'|trans }}
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.cadrage.edit',{
+                                                            'slug' : cadrage.slug
+                                                        }) }}">
+                                                            {{ 'edit.title'|trans }}
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_cadrage_{{ cadrage.id }}">
+                                                            {{ 'delete.title'|trans }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                        <div class="modal fade" id="modal_delete_cadrage_{{ cadrage.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_cadrage_{{ cadrage.id }}Title" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_cadrage_{{ cadrage.id }}Title">
+                                                                            {{ 'app.cadrage.delete.modal.header'|trans }}
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    {% set delete_form = form_delete(cadrage.id,'native.admin.cadrage.delete') %}
+                                                                    {{ form_start(delete_form) }}
+                                                                    <div class="modal-body mx-3">
+                                                                        {{ confirm_delete('app.cadrage.delete.modal.entity' | trans({},'messages'), '') }}
+                                                                        {{ form_widget(delete_form) }}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-sm btn-danger btn-action delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                                                    </div>
+                                                                    {{ form_end(delete_form) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="classement-just" role="tabpanel" aria-labelledby="classement-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if user.classements is not empty %}
+                                        <table class="table table-hover">
+                                            <tbody>
+                                            {% for classement in user.classements | sortbyfield('date','desc') %}
+                                                <tr>
+                                                    <td>
+                                                        {{ classement.getClasse() }}
+                                                    </td>
+                                                    <td>
+                                                        {{ classement.date |localizeddate('long','none','fr') }}
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.classement.show',{
+                                                            'slug' : classement.slug
+                                                        }) }}">
+                                                            {{ 'show'|trans }}
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.classement.edit',{
+                                                            'slug' : classement.slug
+                                                        }) }}">
+                                                            {{ 'edit.title'|trans }}
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </a>
+
+                                                        <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_classement_{{ classement.id }}">
+                                                            {{ 'delete.title'|trans }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                        <div class="modal fade" id="modal_delete_classement_{{ classement.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_classement_{{ classement.id }}Title" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_classement_{{ classement.id }}Title">
+                                                                            {{ 'app.classement.delete.modal.header'|trans }}
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    {% set delete_form = form_delete(classement.id,'native.admin.classement.delete') %}
+                                                                    {{ form_start(delete_form) }}
+                                                                    <div class="modal-body mx-3">
+                                                                        {{ confirm_delete('app.classement.delete.modal.entity' | trans({},'messages'), '') }}
+                                                                        {{ form_widget(delete_form) }}
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-sm btn-danger btn-action delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                                                    </div>
+                                                                    {{ form_end(delete_form) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="affectation-just" role="tabpanel" aria-labelledby="affectation-tab-just">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    {% if user.affectations is not empty %}
+                                        <table class="table table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>
+                                                    {{ 'app.affectation.forms.fields.agence.dest'|trans }}
+                                                </th>
+                                                <th>
+                                                    {{ 'app.affectation.forms.fields.bureau.dest'|trans }}
+                                                </th>
+                                                <th>
+                                                    {{ 'app.affectation.forms.fields.fonction.dest'|trans }}
+                                                </th>
+                                                <th>
+                                                    {{ 'app.affectation.forms.fields.date'|trans }}
+                                                </th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for affectation in user.affectations | sortbyfield('date','desc') %}
+                                                <tr>
+                                                    <td>
+                                                        {{ affectation.agenceDest.nom }}
+                                                    </td>
+                                                    <td>
+                                                    {% if affectation.bureauDest %}
+                                                        {{ affectation.bureauDest.nom }}
+                                                    {% endif %}
+                                                    </td>
+                                                    <td>
+                                                    {% if affectation.fonctionDest %}
+                                                        {{ affectation.fonctionDest.nom }}
+                                                    {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {{ affectation.date | localizeddate('long','none','fr') }}
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-primary btn-action" href="{{ path('native.admin.affectation.show',{
+                                                            'slug' : affectation.slug
+                                                        }) }}">
+                                                            {{ 'show'|trans }}
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.affectation.edit',{
+                                                            'slug' : affectation.slug
+                                                        }) }}">
+                                                            {{ 'edit.title'|trans }}
+                                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                                        </a>
+                                                        <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_affectation_{{ affectation.id }}">
+                                                            {{ 'delete.title'|trans }}
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                        <div class="modal fade" id="modal_delete_affectation_{{ affectation.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_affectation_{{ affectation.id }}Title" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header text-center">
+                                                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_affectation_{{ affectation.id }}Title">
+                                                                            {{ 'app.affectation.delete.modal.header'|trans }}
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    {% set delete_form = form_delete(affectation.id,'native.admin.affectation.delete') %}
+                                                                    {{ form_start(delete_form) }}
+                                                                    <div class="modal-body mx-3">
+                                                                        {{ confirm_delete('app.affectation.delete.modal.entity' | trans({},'messages'), '') }}
+                                                                        {{ form_widget(delete_form) }}
+                                                                    </div>
+                                                                     <div class="modal-footer">
+                                                                        <button class="btn btn-sm btn-danger btn-action delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                                                    </div>
+                                                                    {{ form_end(delete_form) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="conge-just" role="tabpanel" aria-labelledby="conge-tab-just">
+                    <div class="panel-body">
+                        {% set conges = user.getConsommationByYears({0:'now'|date('Y')}) %}
+                        {% if conges is not empty %}
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        {{ 'app.cconsommation.show.fields.modele'|trans }}
+                                    </th>
+                                    <th>
+                                        {{ 'app.cconsommation.show.fields.date.debut'|trans }}
+                                    </th>
+                                    <th>
+                                        {{ 'app.cconsommation.show.fields.date.fin'|trans }}
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for conge in conges %}
+                                        <tr>
+                                            <td>
+                                                {{ conge.cmodele.nom }}
+                                            </td>
+                                            <td>
+                                                {{ conge.datedebut | date('d/m/Y') }}
+                                            </td>
+                                            <td>
+                                                {% if conge.delaiaccorde %}
+                                                    {{ fin_delai(conge.datedebut,conge.delaiaccorde) | date('d/m/Y') }}
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

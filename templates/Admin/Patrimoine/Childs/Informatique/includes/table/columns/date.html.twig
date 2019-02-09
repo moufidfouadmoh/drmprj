@@ -1,0 +1,5 @@
+<a href="{{ path('native.admin.patrimoine.informatique.show',{
+    'slug':patrimoine.slug
+}) }}">
+    {{ 'the' | trans | ucfirst }} {{ patrimoine.date | localizeddate('full', 'none', 'fr' ) }}
+</a>

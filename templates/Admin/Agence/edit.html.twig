@@ -1,0 +1,53 @@
+{% extends 'Global/base.html.twig' %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="offset-1 col-10">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        <i class="lnr lnr-license"></i>
+                        {{ 'app.agence.edit.modal.header'|trans }}
+                    </h5>
+                    <div class="card-content collpase show">
+                        {{ form_start(form,{
+                            'attr':{
+                                'class' : 'form form-horizontal form-bordered'
+                            }
+                        }) }}
+                        <div class="card-body px-lg-5 pt-0">
+                            <div class="card-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur deserunt enim error facere libero molestiae numquam reiciendis sapiente sequi tenetur!</p>
+                            </div>
+
+                            {% include 'Admin/Agence/includes/_form.html.twig' %}
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success btn-rounded mb-4 float-right">
+                                {{ 'save.title'|trans }}
+                            </button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#agence_form_ville').chosen({
+
+            });
+            $('#agence_form_bureaus').chosen({
+
+            });
+        });
+    </script>
+{% endblock %}

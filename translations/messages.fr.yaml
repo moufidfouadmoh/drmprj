@@ -1,0 +1,1026 @@
+admin:
+    username: "    "
+    nom: "Administrateur"
+
+to: "à"
+by: "par"
+the: "le"
+None: "Non défini"
+See More: "Voir plus"
+See Less: "Voir moins"
+
+age:
+    an:
+        singular: "an"
+        plural: "ans"
+    mois:
+        singular: "mois"
+        plural: "mois"
+    jour:
+        singular: "jour"
+        plural: "jours"
+
+gender:
+    man: "Homme"
+    woman: "Femme"
+
+etat:
+    yes: "En cours d'usage"
+    no: "En abandon"
+
+requested:
+    yes: "Requis"
+    no: "Non requis"
+
+delai:
+    yes: "Fixe"
+    no: "Non fixe"
+accord:
+    yes: "Accord"
+    no: "Refus"
+ile:
+    ngazidja: "Ngazidja"
+    ndzuani: "Ndzuani"
+    mwali: "Mwali"
+
+direction:
+    type:
+        generale: "Type général"
+        regionale: "Type régional"
+
+mention:
+    title: "mention"
+    passable: "Passable"
+    abien: "Assez bien"
+    bien: "Bien"
+    tbien: "Très bien"
+    excellent: "Excellent"
+    honorable: "Honorable"
+    thonorable: "Très honorable"
+
+situation:
+    type:
+        pr: "Premier recrutement"
+        st: "Stage"
+        rc: "Recrutement en cours"
+        de: "Départ"
+
+fonction:
+    type:
+        principale: "Type principal"
+        executant: "Type éxécutant"
+
+role:
+    user: "Utilisateur"
+    superadmin: "Administrateur"
+    admin:
+        conge: "Gestionnaire des congés"
+        personnel: "Gestionnaire du personnel"
+        ip: "Gestionnaire des adresses ipv4"
+        materiel:
+            mobilier: "Gestionnaire du matériel mobilier"
+            informatique: "Gestionnaire du matériel informatique"
+        intervention:
+            interne: "Gestionnaire des interventions internes"
+            externe: "Gestionnaire des interventions externes"
+conge:
+    modele:
+        special: "Spécial"
+        sans_solde: "Sans solde"
+        administratif: "Administratif"
+        reconnaissance: "Reconnaissance"
+    nom:
+        permission: "une permission"
+        conge: "un congé"
+        special: "un congé spécial"
+
+inventaire:
+    cas:
+        ajout: "Ajout"
+        retrait: "Retrait"
+    etat:
+        stockage: "Stockage"
+        utilisation: "Utilisation"
+mesure:
+    unite:
+        piece: "pièce(s)"
+        metre: "mètre(s)"
+        carton: "carton(s)"
+
+add:
+    title: "Ajouter"
+    confirm: "Confirmer"
+
+delete:
+    title: "Supprimer"
+    confirm: "Confirmer la suppression"
+    entity: "Vous êtes sur le point de supprimer %entity%"
+    field: "%field%"
+    explanation: "Cette procédure est irreversible"
+    validation: "Voulez-vous continuer?"
+
+edit:
+    title: "Modifier"
+
+actions: "Actions"
+show: "Voir"
+check: "Vérifier"
+accept: "Accepter"
+refuse: "Refuser"
+proceed: "Procéder"
+
+save:
+    title: "Enregistrer"
+    success: "Enregistrement effectué avec succès"
+
+validate: "Valider"
+close: "Fermer"
+access: "Accéder"
+filter: "Filtrer"
+
+app:
+    title: "DRM"
+    homepage: "Acceuil"
+    header:
+        profile:
+            show:
+                title: "Mon profil"
+        conges:
+            title: "Mes congés"
+        personnel:
+            title: "Gestion du personnel"
+            submenu:
+                agent:
+                    title: "Gestion des agents"
+                    submenu:
+                        agent:
+                            add: "Ajouter un agent"
+                            list: "Lister les agents"
+                        affectation:
+                            list: "Les affectations"
+                        situation:
+                            list: "Les attributions de statut"
+                        cadrage:
+                            list: "Les attributions de catégorie"
+                        classement:
+                            list: "Les classements"
+                conge:
+                    title: "Gestion des congés"
+                    submenu:
+                        add: "Enregistrer un congé"
+                        consommation:
+                            all: "Les prises de congé"
+                        modele: "Gestion des modèles"
+
+                statut:
+                    title: "Gestion des statuts"
+                categorie:
+                    title: "Gestion des catégories"
+                fonction:
+                    title: "Gestion des fonctions"
+                bureau:
+                    title: "Gestion des bureaux"
+                agence:
+                    title: "Gestion des agences"
+                lieu:
+                    title: "Gestion des lieux"
+
+                article:
+                    title: "Gestion des publications"
+                    submenu:
+                        add: "Ajouter une publication"
+                        list: "Lister les publications"
+        materiel:
+            title: "Gestion des matériels"
+            submenu:
+                informatique:
+                    title: "Gestion des matériels informatiques"
+                    submenu:
+                        materiel:
+                            list: "Les matériels informatiques"
+                        inventaire:
+                            add: "Ajouter un inventaire"
+                            list: "Lister les inventaires"
+                mobilier:
+                    title: "Gestion des matériels mobiliers"
+                    submenu:
+                        materiel:
+                            list: "Les matériels mobiliers"
+                        inventaire:
+                            add: "Ajouter un inventaire"
+                            list: "Lister les inventaires"
+
+                statut:
+                    title: "Gestion des statuts"
+                categorie:
+                    title: "Gestion des catégories"
+                fonction:
+                    title: "Gestion des fonctions"
+                bureau:
+                    title: "Gestion des bureaux"
+                agence:
+                    title: "Gestion des agences"
+                lieu:
+                    title: "Gestion des lieus"
+    profil:
+        owner: "Profil de %user%"
+    user:
+        add: "Ajouter un agent"
+        mute:
+            title: "Ajouter une affectation"
+        situate:
+            title: "Ajouter un statut"
+        cadrate:
+            title: "Ajouter une catégorie"
+        classify:
+            title: "Ajouter un classement"
+        delete:
+            modal: "l'agent"
+        table:
+            fields:
+                username: "Matricule"
+                nom_complet: "Nom et prénom"
+                statut: "Statut"
+                age: "Âge"
+                sexe: "Sexe"
+        forms:
+            explaining: "Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr."
+            fields:
+                base:
+                    label: "Informations personnelles"
+                username: "Matricule"
+                nom: "Nom"
+                prenom: "Prénom"
+                sexe: "Sexe"
+                datenaissance: "Date de naissance"
+                lieunaissance: "Lieu de naissance"
+                telephone1: "Contact personnel"
+                telephone2: "Deuxième contact"
+                telephone3: "Troisième contact"
+                email: "Email professionnelle"
+                adressepostale: "Adresse postale"
+                enabled: "Activité de compte"
+                roles: "Les rôle(s)"
+                connexion:
+                    label: "Informations de connexion"
+                formations:
+                    label: "Profil académique"
+                    etablissement: "Etablissement fréquenté"
+                    cours: "Formation étudiée"
+                    diplome: "Diplôme obtenu"
+                    mention: "Mention"
+                    date: "Date d'obtention"
+                    pays: "Pays"
+                    ville: "Ville"
+                    adresse: "Adresse"
+                    email: "Email"
+                    tel: "Téléphone"
+        show:
+            box: "Détails agent %user%"
+            tabs:
+                base:
+                    label: "Informations personnelles"
+                    fields:
+                        username: "Matricule"
+                        email: "Email"
+                        nom: "Nom"
+                        prenom: "Prénom"
+                        sexe: "Genre"
+                        dldn: "Date et lieu de naissance"
+                        age: "Âge"
+                        age_retraite: "Âge de retraite"
+                        date_retraite: "Date de départ à la retraite"
+                        date_recrutement: "Date de recrutement"
+                        period_embauche: "Ancienneté"
+                        phones: "Contact"
+                        statut: "Statut"
+                        categorie: "Catégorie"
+                        classe: "Classement"
+                        groupe: "Groupe"
+                        niveau: "Niveau"
+                        echelon: "Echelon"
+                        fonction: "Fonction"
+                        bureau: "Bureau"
+                        agence: "Agence"
+                formation:
+                    label: "Profil académique"
+                situation:
+                    label: "Statuts"
+                affectation:
+                    label: "Affectations"
+                cadrage:
+                    label: "Catégories"
+                classement:
+                    label: "Classements"
+                conge:
+                    label: "Congés"
+        search:
+            title: "Opération de filtrage"
+            fields:
+                user: "Filtrage par nom ou prénom ou matricule ou email"
+                gender: "Filtrage par genre"
+                role: "Filtrage par rôle"
+                statut: "Filtrage par statut"
+                categorie: "Filtrage par catégorie"
+                bureau: "Filtrage par bureau"
+                fonction: "Filtrage par fonction"
+                agence: "Filtrage par agence"
+
+    lieu:
+        add: "Ajouter un lieu"
+        edit:
+            modal:
+                header: "Modification d'un lieu"
+        delete:
+            modal:
+                header: "Suppression d'un lieu"
+                entity: "le lieu dénommé"
+        table:
+            fields:
+                nom: "Lieu"
+                agences: "Les agences y résidant"
+        forms:
+            fields:
+                nom: "Nom du lieu"
+                ile: "Île"
+        show:
+            title: "Détails sur : %lieu%"
+            fields:
+                nom: "Nom du lieu"
+                agences:
+                    count: "Nombre d'agences y résidant"
+        search:
+            title: "Opération de filtrage"
+            fields:
+                nom: "Filtrage par nom"
+                ile: "Filtrage par île"
+
+    agence:
+        add: "Ajouter un agence"
+        edit:
+            modal:
+                header: "Modification d'un agence"
+        delete:
+            modal:
+                header: "Suppression d'un agence"
+                entity: "l'agence dénommé"
+        table:
+            fields:
+                nom: "Agence"
+                lieu: "Lieu"
+                bureaus: "Les bureaux y résidant"
+        forms:
+            fields:
+                nom: "Nom de l'agence"
+                lieu:
+                    label: "Lieu"
+                    placeholder: "Choisir un lieu"
+                bureaus:
+                    label: "Les bureaux y résidant"
+                    placeholder: "Choisir les bureaux"
+        show:
+            title: "Détails sur %agence%"
+            fields:
+                nom: "Nom de l'agence"
+
+    statut:
+        add: "Ajouter un statut"
+        edit:
+            modal:
+                header: "Modification d'un statut"
+        delete:
+            modal:
+                header: "Suppression d'un statut"
+                entity: "le statut dénommé"
+        table:
+            fields:
+                nom: "Statut"
+        forms:
+            fields:
+                nom: "Nom du statut"
+                etat: "Etat"
+        show:
+            title: "Détails sur le statut %statut%"
+            fields:
+                nom: "Nom du statut"
+                etat: "Etat"
+                owners:
+                    count: "Nombre d'agents portant ce statut"
+
+    categorie:
+        add: "Ajouter une catégorie"
+        edit:
+            modal:
+                header: "Modification d'une catégorie"
+        delete:
+            modal:
+                header: "Suppression d'une catégorie"
+                entity: "la catégorie dénommée"
+        table:
+            fields:
+                nom: "Catégorie"
+        forms:
+            fields:
+                nom: "Nom de la catégorie"
+                etat: "Etat"
+        show:
+            title: "Détails sur la catégorie: %categorie%"
+            fields:
+                nom: "Nom de la catégorie"
+                etat: "Etat"
+                owners:
+                    count: "Nombre d'agents de cette catégorie"
+
+    fonction:
+        add: "Ajouter une fonction"
+        edit:
+            modal:
+                header: "Modification d'une fonction"
+        delete:
+            modal:
+                header: "Suppression d'une fonction"
+                entity: "la fonction dénommée"
+        table:
+            fields:
+                nom: "Fonction"
+        forms:
+            fields:
+                nom: "Nom de la fonction"
+                etat: "Activité"
+
+        show:
+            title: "Détails sur la fonction: %fonction%"
+            fields:
+                nom: "Nom de la fonction"
+                etat: "Etat"
+                type: "Type"
+                owners:
+                    count: "Nombre d'agents portant cette fonction"
+
+    bureau:
+        section:
+            service:
+                title: "Gestion des services"
+            departement:
+                title: "Gestion des départements"
+            direction:
+                title: "Gestion des directions"
+        table:
+            fields:
+                nom: "Bureau"
+                telephone: "Téléphone du bureau"
+
+    direction:
+        add: "Ajouter une direction"
+        edit:
+            modal:
+                header: "Modification d'une direction"
+        delete:
+            modal:
+                header: "Suppression d'une direction"
+                entity: "la direction dénommée"
+        table:
+            fields:
+                nom: "Nom"
+                telephone: "Téléphone"
+                departements: "Départements"
+        forms:
+            fields:
+                nom: "Nom de la direction"
+                telephone: "Téléphone"
+                direction: "Direction parente"
+                departements: "Le(s) département(s) affilié(s)"
+                services: "Le(s) service(s) affilié(s)"
+                agences: "Le(s) agence(s)"
+        show:
+            title: "Détails sur %direction%"
+            fields:
+                nom: "Nom de la direction"
+                telephone: "Téléphone"
+                direction: "Direction parente"
+                departements: "Le(s) département(s) affilié(s)"
+                services: "Le(s) service(s) affilié(s)"
+                agences: "Le(s) agence(s)"
+
+    departement:
+        add: "Ajouter un département"
+        edit:
+            modal:
+                header: "Modification d'un département"
+        delete:
+            modal:
+                header: "Suppression d'un département"
+                entity: "le département dénommé"
+        table:
+            fields:
+                nom: "Département"
+                telephone: "Téléphone"
+                services: "Services"
+        forms:
+            fields:
+                nom: "Nom du département"
+                telephone: "Téléphone"
+                services:
+                    label: "Le(s) service(s) affilié(s)"
+                    placeholder: "Choisir les services"
+                agences:
+                    label: "Le(s) agence(s)"
+                    placeholder: "Choisr les agences"
+        show:
+            title: "Détails sur %departement%"
+            fields:
+                nom: "Nom du département"
+
+    service:
+        add: "Ajouter un service"
+        edit:
+            modal:
+                header: "Modification d'un service"
+        delete:
+            modal:
+                header: "Suppression d'un service"
+                entity: "le service dénommé"
+        table:
+            fields:
+                nom: "Service"
+                telephone: "Téléphone"
+                departement: "Département parent"
+
+        forms:
+            fields:
+                nom: "Nom du service"
+                telephone: "Téléphone"
+                departement:
+                    label: "Département parent"
+                    placeholder: "Choisir un département"
+                agences:
+                    label: "Le(s) agence(s)"
+                    placeholder: "Choisir les agences"
+        show:
+            title: "Détails sur %service%"
+            fields:
+                nom: "Nom du service"
+
+    cmodele:
+        add: "Ajouter un modèle"
+        edit:
+            modal:
+                header: "Modification d'un modèle"
+        delete:
+            modal:
+                header: "Suppression d'un modèle"
+                entity: "le modèle dénommé"
+        table:
+            fields:
+                nom: "Nom"
+                statuts: "Les statuts autorisés"
+        forms:
+            fields:
+                nom: "Nom du modèle"
+                etat: "Etat"
+                fixe: "Délai accordable"
+                type: "Type"
+                justificatif: "Justificatif"
+                delai:
+                    min:
+                        label: "Délai minimum accordé"
+                    max:
+                        label: "Délai maximum accordé"
+                    labels:
+                        years: "Nombre d'années"
+                        months: "Nombre de mois"
+                        days: "Nombre de jours"
+                        hours: "Nombre d'heures"
+                service: "Avis du service concerné"
+                departement: "Avis du département concerné"
+                direction: "Avis de la direction"
+                statuts:
+                    label: "Les statuts concernés"
+                    placeholder: "Les statuts concernés"
+        show:
+            title: "Détails sur le modèle: %modele%"
+            fields:
+                nom: "Nom du modèle"
+                etat: "Etat"
+                avis:
+                    service: "Avis du service concerné"
+                    departement: "Avis du département concerné"
+                    direction: "Avis de la direction"
+                delai:
+                    accorde:
+                        min: "Délai minimum accordé"
+                        max: "Délai maximum accordé"
+                    accordable: "Délai accordable"
+                justificatif: "Justificatif"
+                statuts: "Les statuts concernés"
+
+    situation:
+        add: "Attribuer un statut à %user%"
+        attribute: "Attribuer un statut à %user%"
+        edit: "Modifier le statut de %user%"
+        delete:
+            modal:
+                header: "Suppression d'un statut"
+                entity: "un statut"
+        table:
+            fields:
+                username: "Matricule"
+                nom_complet: "Nom et prénom"
+                statut_nom: "Statut"
+                date: "Date"
+        forms:
+            fields:
+                statut:
+                    label: "Statut"
+                    placeholder: "Choisir un statut"
+                date: "Date"
+                reference: "Référence"
+                type: "Type"
+                detail: "Détail"
+        show:
+            title: "Statut de %user%"
+            fields:
+                user: "Agent"
+                statut: "Statut"
+                date: "Date"
+                reference: "Référence"
+                detail: "Détail"
+
+    cadrage:
+        add: "Attribuer une catégorie à l'agent %user%"
+        edit: "Modifier la catégorie de l'agent %user%"
+        delete:
+            modal:
+                header: "Suppression d'une catégorie"
+                entity: "une catégorie"
+        table:
+            fields:
+                username: "Matricule"
+                nom_complet: "Nom et prénom"
+                categorie_nom: "Catégorie"
+                date: "Date"
+        forms:
+            fields:
+                categorie:
+                    label: "Catégorie"
+                    placeholder: "Choisir une catégorie"
+                date: "Date"
+                detail: "Détail"
+        show:
+            title: "Catégorie de %user%"
+            fields:
+                user: "Agent"
+                categorie: "Catégorie"
+                date: "Date"
+                detail: "Détail"
+
+    classement:
+        add: "Attribuer un classement à l'agent %user%"
+        edit: "Modifier le classement de l'agent %user%"
+        delete:
+            modal:
+                header: "Suppression d'un classement"
+                entity: "un classement"
+        table:
+            fields:
+                username: "Matricule"
+                nom_complet: "Nom et prénom"
+                classement: "Classement"
+                date: "Date"
+        forms:
+            fields:
+                groupe:
+                    label: "Groupe"
+                niveau:
+                    label: "Niveau"
+                echelon:
+                    label: "Echelon"
+                date: "Date"
+                detail: "Détail"
+        show:
+            title: "Classement de %user%"
+            fields:
+                user: "Agent"
+                groupe: "Groupe"
+                niveau: "Niveau"
+                echelon: "Echelon"
+                date: "Date"
+                detail: "Détail"
+
+    affectation:
+        add: "Attribuer une affectation à l'agent %user%"
+        edit: "Modifier l'affectation de l'agent %user%"
+        delete:
+            modal:
+                header: "Suppression d'une affectation"
+                entity: "une affectation"
+        table:
+            fields:
+                username: "Matricule"
+                nom_complet: "Nom et prénom"
+                date: "Date"
+        forms:
+            fields:
+                user:
+                    label: "Agent"
+                    placeholder: "Choisir l'agent concerné"
+                fonction:
+                    origin: "Fonction d'origine"
+                    dest: "Nouvelle fonction"
+                    placeholder: "Choisir une fonction"
+                bureau:
+                    origin: "Bureau d'origine"
+                    dest: "Nouveau bureau"
+                    placeholder: "Choisir un bureau"
+                agence:
+                    origin: "Agence d'origine"
+                    dest: "Nouvelle agence"
+                    placeholder: "Choisir une agence"
+                date: "Date"
+                reference: "Référence"
+                detail: "Détail"
+        show:
+            title: "Affectation de %user%"
+            fields:
+                user: "Agent"
+                fonction:
+                    dest: "Fonction nouvellement occupée"
+                bureau:
+                    dest: "Bureau d'affectation"
+                agence:
+                    dest: "Agence d'affectation"
+                date: "Date"
+                reference: "Référence"
+                detail: "Détail"
+
+    cconsommation:
+        valide:
+            empty: "Aucun congé en cours de validité"
+        add: "Ajouter un congé"
+        register: "Enregistrer un congé"
+        modify: "Modifier un congé"
+        attribute: "Enregistrement de congé: %modele% pour %user%"
+        check:
+            not:
+                exist: "%user% n'a pas encore de statut"
+                available: "Le statut de %user% ne lui permet pas une telle opération"
+        edit:
+            header: "Modification d'une demande de congé"
+        delete:
+            modal:
+                header: "Suppression d'un congé"
+                entity: "un congé"
+        table:
+            fields:
+                owner: "Propriétaire"
+                modele: "Type de congé"
+                delai: "Délai accordé"
+                date:
+                    debut: "Date de début"
+                    fin: "Date de fin"
+        forms:
+            fields:
+                datedebut: "Date de début"
+                annee: "Déduction"
+                delai:
+                    demande: "Délai demandé"
+                    accorde: "Délai accordé"
+                motif: "Motif"
+                user:
+                    label: "Agent"
+                    placeholder: "Choisir l'agent"
+        show:
+            title: "%modele% / %user%"
+            fields:
+                modele: "Type de congé"
+                user: "Agent"
+                delai: "Délai accordé"
+                date:
+                    debut: "Date de début"
+                    fin: "Date de fin"
+        request:
+            counter:
+                title: "Compteur de consommation"
+        search:
+            title: "Opération de filtrage"
+            fields:
+                user: "Filtrage par nom ou prénom ou matricule ou email"
+                modeles: "Filtrage par type de congé"
+                agences: "Filtrage par agence"
+                bureaus: "Filtrage par bureau"
+                debut: "Date de début"
+                fin: "Date de fin"
+
+    intervention:
+        add: "Ajouter une intervention"
+        edit:
+            modal:
+                header: "Modification d'une intervention"
+        delete:
+            modal:
+                header: "Suppression d'une intervention"
+                entity: "une intervention"
+        table:
+            fields:
+                date: "Date"
+                lieu: "Lieu"
+                bureaus: "Bureau(x) concerné(s)"
+                users: "Intervenant(s)"
+        forms:
+            fields:
+                date: "Date de l'intervention"
+                probleme: "Problème"
+                equipement: "Equipement"
+                lieu: "Lieu"
+                materiels:
+                    label: "Matériel(s) concerné(s)"
+                    placeholder: "Choisir un matériel"
+                solution: "Solution effectuée"
+                detail: "Détail sur cette intervention"
+                bureaus:
+                    label: "Bureau(x) concerné(s)"
+                    placeholder: "Choisir un bureau"
+                users:
+                    label: "Intervenant(s)"
+                    placeholder: "Choisir un agent"
+
+        show:
+            title: "Détails sur une intervention"
+            fields:
+                date: "Date de l'intervention"
+                bureaus: "Bureau(x) concerné(s)"
+                users: "Intervenant(s)"
+                probleme: "Problème"
+                materiels: "Matériel(s) concerné(s)"
+                solution: "Solution effectuée"
+                detail: "Détail et/ou remarque"
+
+    materiel:
+        add: "Ajouter un matériel"
+        distribute:
+            title: "Ajouter une distribution"
+        edit:
+            modal:
+                header: "Modification d'un matériel"
+        delete:
+            modal:
+                header: "Suppression d'un matériel"
+                entity: "un matériel"
+        table:
+            fields:
+                equipement: "Descriptif du matériel"
+                marque: "Marque du matériel"
+                modele: "Modèle du matériel"
+                quantite: "Quantité"
+        forms:
+            fields:
+                equipement: "Nom de l'équipement"
+                marque: "Marque de l'équipement"
+                unite: "Unité de mesure"
+                modele: "Modèle"
+
+        show:
+            title: "Détails sur un matériel"
+            fields:
+                equipement: "Nom de l'équipement"
+                marque: "Marque de l'équipement"
+                inventaire: "Inventaire"
+
+        search:
+            title: "Opération de filtrage"
+            fields:
+                equipements: "Filtrage par équipement"
+                marques: "Filtrage par marque"
+
+    inventaire:
+        forms:
+            fields:
+                bureau:
+                    label: "Bureau"
+                    placeholder: "Choisir un bureau"
+                materiel:
+                    label: "Materiel"
+                    placeholder: "Choisir un matériel"
+                detail: "Détail"
+                quantite: "Quantité"
+                cas: "Cas"
+                etat: "Etat"
+                date: "Date"
+
+    patrimoine:
+        add: "Ajouter un inventaire"
+        edit:
+            modal:
+                header: "Modification d'un inventaire"
+        delete:
+            modal:
+                header: "Suppression d'un inventaire"
+                entity: "un inventaire"
+        table:
+            fields:
+                date: "Date"
+                owner: "Inventoriste"
+        forms:
+            fields:
+                bureau:
+                    label: "Bureau"
+                    placeholder: "Choisir un bureau"
+                materiel:
+                    label: "Equipement"
+                    placeholder: "Choisir un matériel"
+                detail: "Détail"
+                quantite: "Quantité"
+                cas: "Cas"
+                date: "Date"
+
+        show:
+            title: "Détails sur un inventaire"
+            fields:
+                date: "Date de réalisation"
+                owner: "Attesté par"
+                listing:
+                    materiel: "Equipement"
+                    marque: "Marque"
+                    quantite: "Quantité"
+                    bureau: "Bureau"
+                    etat: "Etat"
+                    cas: "Cas"
+
+        search:
+            title: "Opération de filtrage"
+            fields:
+                equipements: "Filtrage par équipement"
+                marques: "Filtrage par marque"
+
+    article:
+        add: "Ajouter une publication"
+        register: "Enregistrer une publication"
+        modify: "Modifier une publication"
+        edit:
+            header: "Modification d'une publication"
+        delete:
+            modal:
+                header: "Suppression d'une publication"
+                entity: "la publication intitulée %title%"
+        table:
+            fields:
+                title: "Titre"
+                user: "Auteur"
+        forms:
+            fields:
+                title: "Titre de la publication"
+                content: "Contenu de la publication"
+        show:
+            title: "%title%"
+            fields:
+                titre: "Titre de la publication"
+                user: "Auteur"
+                content: "Contenu"
+                date:
+                    created: "Date d'enregistrement"
+                    posted: "Date de publication"
+                    updated: "Date de dernière modification"
+        search:
+            title: "Opération de filtrage"
+            fields:
+                title: "Filtrage par texte"
+                debut: "Date de début"
+                fin: "Date de fin"
+
+    ip:
+        add: "Ajouter une adresse ip"
+        edit:
+            modal:
+                header: "Modification d'une adresse ip"
+        delete:
+            modal:
+                header: "Suppression d'une adresse ip"
+                entity: "l'une adresse ip"
+        table:
+            fields:
+                address: "Adresse"
+                agence: "Agence"
+                bureau: "Bureau"
+        forms:
+            fields:
+                address: "Adresse ip"
+                pc: "Nom du pc"
+                agence:
+                    label: "Agence"
+                    placeholder: "Choisir une agence"
+                bureau:
+                    label: "Bureau"
+                    placeholder: "Choisir un bureau"
+        show:
+            title: "Détails sur %ip%"
+            fields:
+                address: "Adresse"
+
+        search:
+            title: "Opération de filtrage"
+            fields:
+                address: "Filtrage par adresse"
+                bureaus: "Filtrage par bureau"
+                agences: "Filtrage par agence"
+exception:
+    authorization: "Page inaccessible"

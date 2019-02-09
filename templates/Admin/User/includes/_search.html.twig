@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.user, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off',
+                    'placeholder' : 'app.user.search.fields.user'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        {{ form_label(search.gender) }}
+        <br>
+        {% for child in search.gender %}
+            <div class="custom-control custom-radio custom-control-inline">
+                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                {{ form_label(child,null,{
+                    'label_attr' : {
+                        'class' : 'custom-control-label'
+                    }
+                }) }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.statuts, {
+                'attr' : {
+                    'data-placeholder' : 'app.user.search.fields.statut'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.categories, {
+                'attr' : {
+                    'data-placeholder' : 'app.user.search.fields.categorie'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.bureaus, {
+                'attr' : {
+                    'data-placeholder' : 'app.user.search.fields.bureau'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.fonctions, {
+                'attr' : {
+                    'data-placeholder' : 'app.user.search.fields.fonction'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<ul class="navbar-nav nav-flex-icons">
+    <li class="nav-item dropdown">
+        <a class="nav-link border border-light rounded dropdown-toggle" id="dropdownAccount" data-toggle="dropdown" aria-haspopup="true"
+           aria-expanded="false">
+            {% if is_admin %}
+                {{ 'admin.username'|trans }}
+                <i class="fa fa-connectdevelop mr-2"></i>
+                {{ 'admin.nom'|trans }}
+            {% else %}
+                {{ user.username }}
+                <i class="fa fa-connectdevelop mr-2"></i>
+                {{ user|nom_prenom }}
+            {% endif %}
+        </a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="dropdownAccount">
+            <a class="dropdown-item" href="{{ path('security_password') }}">{{ 'password.change.title'|trans({},'security') }}</a>
+            {% if not is_admin %}
+                <a class="dropdown-item" href="{{ path('security_profile') }}">{{ 'app.header.profile.show.title'|trans }}</a>
+                <a class="dropdown-item" href="{{ path('security_conges') }}">{{ 'app.header.conges.title'|trans }}</a>
+            {% endif %}
+            <a class="dropdown-item" href="{{ path('security_logout') }}">{{ 'logout.title'|trans({},'security') }}</a>
+        </div>
+    </li>
+
+</ul>

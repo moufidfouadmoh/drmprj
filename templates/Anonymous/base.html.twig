@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        {{ 'app.title'|trans }}  {% block title %}{% endblock %}
+    </title>
+	<link rel="icon" type="image/ico" href="{{ asset('ct.ico') }}">
+    <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/login.css') }}">
+    <style>
+        .error{
+            color: #ffa700;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,5 @@
+{% if agence.bureaus | length > 0 %}
+{% for bureau in agence.bureaus %}
+    {{ bureau.nom }}{% if not loop.last %},{% endif %}
+{% endfor %}
+{% endif %}

@@ -1,0 +1,97 @@
+{% extends 'Global/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('native.admin.user.show',{
+                    'slug':classement.user.slug
+                }) }}" class="btn btn-primary btn-rounded">
+                    profil de {{ classement.user | nom_prenom }}
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        {{ 'app.classement.show.title'|trans({
+                            '%user%': classement.user | nom_prenom
+                        }) }}
+                    </h5>
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover record_properties">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">{{ 'app.classement.show.fields.user'| trans }}</th>
+                                    <td>{{ classement.user|nom_prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'app.classement.show.fields.date' | trans }}</th>
+                                    <td>{{ classement.date|localizeddate('long','none','fr') }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'app.classement.show.fields.groupe' | trans }}</th>
+                                    <td>{{ classement.groupe }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'app.classement.show.fields.niveau' | trans }}</th>
+                                    <td>{{ classement.niveau }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">{{ 'app.classement.show.fields.echelon' | trans }}</th>
+                                    <td>{{ classement.echelon }}</td>
+                                </tr>
+                                {% if classement.detail %}
+                                    <tr>
+                                        <th scope="row">{{ 'app.classement.show.fields.detail' | trans }}</th>
+                                        <td>{{ froala_display(classement.detail) }}</td>
+                                    </tr>
+                                {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-sm btn-default btn-rounded pull-right" href="{{ path('native.admin.classement.edit',{
+                            'slug':classement.slug
+                        }) }}">
+                            {{ 'edit.title'| trans }}
+                        </a>
+                        <a class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#modal_delete_classement_{{ classement.id }}">
+                            {{ 'delete.title'|trans }}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <div class="modal fade" id="modal_delete_classement_{{ classement.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_classement_{{ classement.id }}Title" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_classement_{{ classement.id }}Title">
+                                            {{ 'app.classement.delete.modal.header'|trans }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% set delete_form = form_delete(classement.id,'native.admin.classement.delete') %}
+                                    {{ form_start(delete_form) }}
+                                    <div class="modal-body mx-3">
+                                        {{ confirm_delete('app.classement.delete.modal.entity' | trans({},'messages'), '') }}
+                                        {{ form_widget(delete_form) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-sm btn-danger btn-rounded delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                    </div>
+                                    {{ form_end(delete_form) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

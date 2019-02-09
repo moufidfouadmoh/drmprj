@@ -1,0 +1,4 @@
+{% for user in intervention.users %}
+    {{ user.nom }} {{ user.prenom }}{% if not loop.last %},{% endif %}
+{% else %}
+{% endfor %}

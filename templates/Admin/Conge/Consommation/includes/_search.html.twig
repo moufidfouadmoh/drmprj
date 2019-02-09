@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.user, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off',
+                    'placeholder' : 'app.cconsommation.search.fields.user'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.modeles, {
+                'attr' : {
+                    'data-placeholder' : 'app.cconsommation.search.fields.modeles'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(search.debut, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(search.debut) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(search.fin, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(search.fin) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.agences, {
+                'attr' : {
+                    'data-placeholder' : 'app.cconsommation.search.fields.agences'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="md-form mb-5">
+            {{ form_widget(search.bureaus, {
+                'attr' : {
+                    'data-placeholder' : 'app.cconsommation.search.fields.bureaus'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+user:
+    username:
+        unique: "Ce matricule a déjà été utilisé"
+        not:
+            blank: "Le matricule doit être renseigné"
+        length:
+            min: "Le matricule doit contenir au moins deux caratères"
+            max: ""
+    email:
+        unique: "Cet email a déjà été utilisé"
+        not:
+            blank: "L'email doit être renseigné"
+    password:
+        old: "Le mot de passe courant est mal renseigné"
+        repeated: "Le nouveau mot de passe est mal confirmé"
+        length:
+            min: "Le mot de passe doit contenir au moins 4 caractères"
+
+situation:
+    unique: "Il semble que cet enregistrement a déjà été éffectué"
+
+materiel:
+    unique: "Il semble que cet enregistrement a déjà été éffectué"
+
+article:
+    unique: "Il semble que cet enregistrement a déjà été éffectué"
+
+ip:
+    unique: "Il semble que cet enregistrement a déjà été éffectué"
+    not:
+        correct: "Adresse ip incorrecte"

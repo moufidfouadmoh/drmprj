@@ -1,0 +1,61 @@
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.date,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(form.date) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="md-form">
+            {{ form_label(form.reference) }}
+            {{ form_widget(form.reference,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete':'off'
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="form-row">
+    {% for child in form.type %}
+        <div class="custom-control custom-radio custom-control-inline">
+            {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+            {{ form_label(child,null,{
+                'label_attr' : {
+                    'class' : 'custom-control-label'
+                }
+            }) }}
+        </div>
+    {% endfor %}
+</div>
+<hr>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.statut) }}
+            {{ form_widget(form.statut,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.situation.forms.fields.statut.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.detail) }}
+            {{ form_widget(form.detail) }}
+        </div>
+    </div>
+</div>
+

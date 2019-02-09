@@ -1,0 +1,88 @@
+{% extends 'Global/base.html.twig' %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-primary btn-rounded" href="{{ path('native.admin.user.add') }}">
+                    <i class="fa fa-plus"></i>
+                    {{ 'app.user.add'|trans }}
+                </a>
+            </div>
+            <div class="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#searchModal">
+                    <i class="fa fa-search-plus"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-frame modal-top" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="searchModalLabel">
+                                    {{ 'app.user.search.title'|trans }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans|ucfirst }}">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-content collpase show">
+                                                    {{ form_start(search,{
+                                                        'attr':{
+                                                            'class' : 'form form-horizontal form-bordered'
+                                                        }
+                                                    }) }}
+                                                    <div class="card-body px-lg-5 pt-0">
+                                                        {% include 'Admin/User/includes/_search.html.twig' %}
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button class="btn btn-orange btn-rounded mb-4 float-right">
+                                                            {{ 'filter'|trans }}
+                                                        </button>
+                                                    </div>
+                                                    {{ form_end(search) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <a href="{{ path('native.admin.user.pdf.list') }}" class="btn btn-white btn-rounded pull-right">
+                    <span class="text-danger">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ sg_datatables_render(datatable) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#statuts').chosen({});
+            $('#categories').chosen({});
+            $('#bureaus').chosen({});
+            $('#fonctions').chosen({});
+        });
+    </script>
+{% endblock %}

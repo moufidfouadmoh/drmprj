@@ -1,0 +1,113 @@
+{% if bureau.type == 'direction' %}
+    <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.direction.edit',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ 'edit.title'|trans }}
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </a>
+
+    <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_direction_{{ bureau.id }}">
+        {{ 'delete.title'|trans }}
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+    <div class="modal fade" id="modal_delete_direction_{{ bureau.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_direction_{{ bureau.id }}Title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_direction_{{ bureau.id }}Title">
+                        {{ 'app.direction.delete.modal.header'|trans }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% set delete_form = form_delete(bureau.id,'native.admin.direction.delete') %}
+                {{ form_start(delete_form) }}
+                <div class="modal-body mx-3">
+                    {{ confirm_delete('app.direction.delete.modal.entity' | trans({},'messages'), bureau.nom) }}
+                    {{ form_widget(delete_form) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-danger">{{ 'accept'|trans({},'messages') }}</button>
+                    <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                </div>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+
+{% elseif bureau.type == 'departement'  %}
+    <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.departement.edit',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ 'edit.title'|trans }}
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </a>
+    <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_departement_{{ bureau.id }}">
+        {{ 'delete.title'|trans }}
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+    <div class="modal fade" id="modal_delete_departement_{{ bureau.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_departement_{{ bureau.id }}Title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_departement_{{ bureau.id }}Title">
+                        {{ 'app.departement.delete.modal.header'|trans }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% set delete_form = form_delete(bureau.id,'native.admin.departement.delete') %}
+                {{ form_start(delete_form) }}
+                <div class="modal-body mx-3">
+                    {{ confirm_delete('app.departement.delete.modal.entity' | trans({},'messages'), bureau.nom) }}
+                    {{ form_widget(delete_form) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-danger">{{ 'accept'|trans({},'messages') }}</button>
+                    <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                </div>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+
+{% elseif bureau.type == 'service'  %}
+    <a class="btn btn-sm btn-default btn-action" href="{{ path('native.admin.service.edit',{
+        'slug' : bureau.slug
+    }) }}">
+        {{ 'edit.title'|trans }}
+        <i class="fa fa-edit" aria-hidden="true"></i>
+    </a>
+
+    <a class="btn btn-sm btn-danger btn-action" data-toggle="modal" data-target="#modal_delete_service_{{ bureau.id }}">
+        {{ 'delete.title'|trans }}
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+    <div class="modal fade" id="modal_delete_service_{{ bureau.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_service_{{ bureau.id }}Title" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_service_{{ bureau.id }}Title">
+                        {{ 'app.service.delete.modal.header'|trans }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% set delete_form = form_delete(bureau.id,'native.admin.service.delete') %}
+                {{ form_start(delete_form) }}
+                <div class="modal-body mx-3">
+                    {{ confirm_delete('app.service.delete.modal.entity' | trans({},'messages'), bureau.nom) }}
+                    {{ form_widget(delete_form) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-danger">{{ 'accept'|trans({},'messages') }}</button>
+                    <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                </div>
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,41 @@
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.equipement, {
+                'attr' : {
+                    'required' : 'required',
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(form.equipement) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.modele, {
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(form.modele) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group mb-5">
+        {{ form_label(form.unite) }}
+        <br>
+        {% for child in form.unite %}
+            <div class="custom-control custom-radio custom-control-inline">
+                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                {{ form_label(child,null,{
+                    'label_attr' : {
+                        'class' : 'custom-control-label'
+                    }
+                }) }}
+            </div>
+        {% endfor %}
+    </div>
+</div>

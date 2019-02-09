@@ -1,0 +1,140 @@
+
+<div class="form-row">
+    <div class="col">
+        <div class="md-form">
+            {{ form_widget(form.date,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete' : 'off'
+                }
+            }) }}
+            {{ form_label(form.date) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="md-form">
+            {{ form_label(form.reference) }}
+            {{ form_widget(form.reference,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'autocomplete':'off'
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.fonctionDest) }}
+            {{ form_widget(form.fonctionDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.fonction.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.bureauDest) }}
+            {{ form_widget(form.bureauDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.bureau.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.agenceDest) }}
+            {{ form_widget(form.agenceDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.agence.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.detail) }}
+            {{ form_widget(form.detail) }}
+        </div>
+    </div>
+</div>
+{#<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.bureauOrigin) }}
+            {{ form_widget(form.bureauOrigin,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.bureau.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.bureauDest) }}
+            {{ form_widget(form.bureauDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.bureau.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.agenceDest) }}
+            {{ form_widget(form.agenceDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.agence.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<hr>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.agenceOrigin) }}
+            {{ form_widget(form.agenceOrigin,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.agence.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.agenceDest) }}
+            {{ form_widget(form.agenceDest,{
+                'attr' : {
+                    'class' : 'form-control',
+                    'data-placeholder' : 'app.affectation.forms.fields.agence.placeholder'|trans
+                }
+            }) }}
+        </div>
+    </div>
+</div>
+<div class="form-row">
+    <div class="col">
+        <div class="form-group">
+            {{ form_label(form.detail) }}
+            {{ form_widget(form.detail) }}
+        </div>
+    </div>
+</div>#}
+
+

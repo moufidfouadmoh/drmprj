@@ -1,0 +1,78 @@
+{% extends 'Global/base.html.twig' %}
+{% set consommations = user.getConsommationCounter() %}
+{% set valides = user.getCongesValides() %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8">
+                {% if valides is not empty %}
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ 'app.cconsommation.show.fields.modele'|trans }}</th>
+                            <th>{{ 'app.cconsommation.show.fields.date.debut'|trans }}</th>
+                            <th>{{ 'app.cconsommation.show.fields.date.fin'|trans }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for conge in valides | sortbyfield('datedebut','desc') %}
+                            <tr>
+                                <td>{{ conge.cmodele.nom }}</td>
+                                <td>{{ conge.datedebut | localizeddate('long','none','fr') }}</td>
+                                <td>{{ conge.getDatefin(conge.delaiaccorde) | localizeddate('long','none','fr') }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p>
+                        {{ 'app.cconsommation.valide.empty'| trans }}
+                    </p>
+                {% endif %}
+            </div>
+            <div class="col-4">
+                {% if consommations is not empty %}
+                    <!-- Heading -->
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">{{ 'app.cconsommation.request.counter.title'|trans }}</span>
+                    </h4>
+                    <!-- Cart -->
+                    <ul class="list-group mb-3 z-depth-1">
+                        {% for annee,jours in consommations %}
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0">{{ annee }}</h6>
+                                </div>
+                                <span class="text-muted">{{ jours }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <!-- Cart -->
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            {% if user.conges is not empty %}
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>{{ 'app.cconsommation.show.fields.modele'|trans }}</th>
+                        <th>{{ 'app.cconsommation.show.fields.date.debut'|trans }}</th>
+                        <th>{{ 'app.cconsommation.show.fields.date.fin'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for conge in user.conges | sortbyfield('datedebut','desc') %}
+                        <tr>
+                            <td>{{ conge.cmodele.nom }}</td>
+                            <td>{{ conge.datedebut | localizeddate('long','none','fr') }}</td>
+                            <td>{{ conge.getDatefin(conge.delaiaccorde) | localizeddate('long','none','fr') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

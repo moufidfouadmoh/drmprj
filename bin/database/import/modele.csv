@@ -1,0 +1,9 @@
+"id";"nom";"slug";"etat";"type";"justificatif";"service";"departement";"direction";"fixe";"delai";"created_at";"updated_at"
+"3","Mariage d'un enfant","mariage-dun-enfant","1","TYPE_CONGE_SPECIAL","0","1","1","0","1","+P00Y00M09DT00H00M00S","2018-11-24 09:25:38","2018-11-29 16:37:45"
+"4","Circoncision d'un enfant","circoncision-dun-enfant","1","TYPE_CONGE_SPECIAL","0","1","1","0","1","+P00Y00M03DT00H00M00S","2018-11-24 09:25:39","2018-11-29 16:38:46"
+"5","Décès d'un père, mère ou enfant","deces-dun-pere-mere-ou-enfant","1","TYPE_CONGE_SPECIAL","0","1","1","0","1","+P00Y00M03DT00H00M00S","2018-11-24 09:25:39","2018-11-29 16:40:31"
+"6","Décès d'une épouse","deces-dune-epouse","1","TYPE_CONGE_SPECIAL","0","1","1","0","1","+P00Y00M09DT00H00M00S","2018-11-24 09:25:39","2018-11-29 16:41:40"
+"7","Décès d'un époux","deces-dun-epoux","1","TYPE_CONGE_SPECIAL","0","1","1","0","1","+P00Y04M15DT00H00M00S","2018-11-24 09:25:39","2018-11-29 16:43:36"
+"8","Permission","permission","1","TYPE_CONGE_ADMINISTRATIF","0","1","1","0","0","+P00Y00M07DT00H00M00S","2018-11-24 09:25:39","2018-11-27 06:39:51"
+"9","Congé","conge","1","TYPE_CONGE_ADMINISTRATIF","0","1","1","1","0","+P00Y00M30DT00H00M00S","2018-11-29 18:13:34","2018-11-29 18:13:34"
+

@@ -1,0 +1,80 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        {{ 'app.article.show.title'|trans({
+                            '%title%':article.title
+                        }) }}
+                    </h5>
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover record_properties">
+                                <tbody>
+                                <tr>
+                                    <th scope="row">{{ 'app.article.show.fields.date.created'| trans }}</th>
+                                    <td>{{ 'the' | trans | ucfirst }} {{ article.createdAt | localizeddate('full', 'none', 'fr' ) }}</td>
+                                </tr>
+                                {% if article.updatedAt != article.createdAt %}
+                                    <tr>
+                                        <th scope="row">{{ 'app.article.show.fields.date.updated'| trans }}</th>
+                                        <td>{{ 'the' | trans | ucfirst }} {{ article.updatedAt | localizeddate('full', 'none', 'fr' ) }}</td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <th scope="row">{{ 'app.article.show.fields.user' | trans }}</th>
+                                    <td>{{ article.user | nom_prenom }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <article>
+                                {{ froala_display(article.content) }}
+                            </article>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-sm btn-default btn-rounded pull-right" href="{{ path('native.admin.article.edit',{
+                            'slug':article.slug
+                        }) }}">
+                            {{ 'edit.title'| trans }}
+                        </a>
+                        <a class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#modal_delete_article_{{ article.id }}">
+                            {{ 'delete.title'|trans }}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <div class="modal fade" id="modal_delete_article_{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_article_{{ article.id }}Title" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_article_{{ article.id }}Title">
+                                            {{ 'app.article.delete.modal.header'|trans }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% set delete_form = form_delete(article.id,'native.admin.article.delete') %}
+                                    {{ form_start(delete_form) }}
+                                    <div class="modal-body mx-3">
+                                        {{ confirm_delete('app.article.delete.modal.entity' | trans({
+                                            '%title%':article.title
+                                        },'messages'), '') }}
+                                        {{ form_widget(delete_form) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-sm btn-danger btn-rounded delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                    </div>
+                                    {{ form_end(delete_form) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

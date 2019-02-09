@@ -1,0 +1,58 @@
+{{ cconsommation.user.nom }} {{ cconsommation.user.prenom }}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary btn-sm pull-right pt-0 pb-0 px-0 py-0" data-toggle="modal" data-target="#detailModal{{ cconsommation.id }}">
+    <i class="fa fa-eye-slash"></i>
+</button>
+
+<!-- Modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailModal{{ cconsommation.id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{ cconsommation.id }}" aria-hidden="true">
+    <div class="modal-dialog modal-frame modal-top" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel{{ cconsommation.id }}">
+                    {{ cconsommation.user.nom }} {{ cconsommation.user.prenom }} {{ cconsommation.user.username }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans|ucfirst }}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{ 'app.user.show.tabs.base.fields.statut'| trans }}</th>
+                            <td>{{ cconsommation.situation.statut.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'app.user.show.tabs.base.fields.agence'| trans }}</th>
+                            <td>{{ cconsommation.affectation.agenceDest.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'app.user.show.tabs.base.fields.fonction'| trans }}</th>
+                            <td>
+                                {% if cconsommation.affectation.fonctionDest %}
+                                    {{ cconsommation.affectation.fonctionDest.nom }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">{{ 'app.user.show.tabs.base.fields.bureau'| trans }}</th>
+                            <td>
+                                {% if cconsommation.affectation.bureauDest %}
+                                    {{ cconsommation.affectation.bureauDest.nom }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">{{ 'close'|trans|ucfirst }}</button>
+            </div>
+        </div>
+    </div>
+</div>

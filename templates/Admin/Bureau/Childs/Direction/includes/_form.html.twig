@@ -1,0 +1,65 @@
+<div class="md-form mb-5">
+    {{ form_widget(form.nom, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.nom) }}
+</div>
+<div class="md-form mb-5">
+    {{ form_widget(form.telephone, {
+        'attr' : {
+            'required' : 'required',
+            'class' : 'form-control',
+            'autocomplete' : 'off'
+        }
+    }) }}
+    {{ form_label(form.telephone) }}
+</div>
+
+{% for child in form.concern %}
+    <div class="custom-control custom-radio custom-control-inline">
+        {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+        {{ form_label(child,null,{
+            'label_attr' : {
+                'class' : 'custom-control-label'
+            }
+        }) }}
+    </div>
+{% endfor %}
+
+<div class="md-form mb-5">
+    {{ form_widget(form.direction, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.direction.forms.fields.direction'|trans
+        }
+    }) }}
+</div>
+<div class="md-form mb-5">
+    {{ form_widget(form.departements, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.direction.forms.fields.departements'|trans
+        }
+    }) }}
+</div>
+<div class="md-form mb-5">
+    {{ form_widget(form.services, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.direction.forms.fields.services'|trans
+        }
+    }) }}
+</div>
+<div class="md-form mb-5">
+    {{ form_widget(form.agences, {
+        'attr' : {
+            'class' : 'chosen-select',
+            'data-placeholder':'app.direction.forms.fields.agences'|trans
+        }
+    }) }}
+</div>
+

@@ -1,0 +1,5 @@
+{% if departement.services is not empty %}
+    {% for service in departement.services %}
+        {{ service.nom }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+{% endif %}

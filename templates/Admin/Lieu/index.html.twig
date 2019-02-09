@@ -1,0 +1,141 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary btn-rounded pull-left" data-toggle="modal" data-target="#modal_create_lieu">
+                    <i class="fa fa-plus"></i>
+                    {{ 'app.lieu.add'|trans }}
+                </button>
+                <div class="modal fade" id="modal_create_lieu" tabindex="-1" role="dialog" aria-labelledby="modal_create_lieuTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal_create_lieuTitle">
+                                    {{ 'app.lieu.add'|trans }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {{ form_start(form,{
+                                'attr':{
+                                    'class' : 'form form-horizontal form-bordered'
+                                }
+                            }) }}
+                            <div class="modal-body mx-3">
+                                {% include 'Admin/Lieu/includes/_form.html.twig' %}
+                            </div>
+                            <div class="modal-footer d-flex">
+                                <button class="btn btn-success btn-rounded mb-4 float-right">
+                                    {{ 'save.title'|trans }}
+                                </button>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#searchModal">
+                    <i class="fa fa-search-plus"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-frame modal-top" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="searchModalLabel">
+                                    {{ 'app.lieu.search.title'|trans }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans|ucfirst }}">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-content collpase show">
+                                                    {{ form_start(search,{
+                                                        'attr':{
+                                                            'class' : 'form form-horizontal form-bordered'
+                                                        }
+                                                    }) }}
+                                                    <div class="card-body px-lg-5 pt-0">
+                                                        {% include 'Admin/Lieu/includes/_search.html.twig' %}
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button class="btn btn-orange btn-rounded mb-4 float-right">
+                                                            {{ 'filter'|trans }}
+                                                        </button>
+                                                    </div>
+                                                    {{ form_end(search) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <a href="{{ path('native.admin.lieu.pdf.list') }}" class="btn btn-white btn-rounded pull-right">
+                    <span class="text-danger">
+                        <i class="fa fa-file-pdf-o"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {{ sg_datatables_render(datatable) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ asset('build/js/jquery.form.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(document).on('submit', '[name="lieu_form"]', function(e){
+                e.preventDefault();
+
+                $form = $(e.target);
+                // modal = $('#modal_create_lieu');
+                modal = $form.closest("div.modal");
+
+                var title = $('#lieu_form_nom').val();
+
+                var $submitButton = $form.find(':submit');
+                $submitButton.html('<i class="fa fa-spinner fa-pulse"></i>');
+                $submitButton.prop('disabled', true);
+
+                $form.ajaxSubmit({
+                    type: 'post',
+                    success: function(data) {
+                        if (data == 'ok') {
+                            $('ul').append('<li>' + title + '</li>');
+                            modal.modal('toggle');
+                        } else {
+                            modal.find('.modal-body').html(data);
+                            window.location = "{{ path('native.admin.lieu.index') }}";
+                        }
+                    },
+                    error: function(jqXHR, status, error) {
+                        $submitButton.html(button.data('label'));
+                        /*$submitButton.prop('disabled', false);*/
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

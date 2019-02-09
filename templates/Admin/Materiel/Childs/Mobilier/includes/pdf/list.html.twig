@@ -1,0 +1,27 @@
+{% extends 'Print/base.html.twig' %}
+{% block body %}
+    <main class="mt-2 pt-2">
+        <div class="container">
+            <div class="row">
+                <table class="table table-bordered" cellspacing="0" width="100%" role="grid" style="width: 100%;">
+                    <thead>
+                    <tr role="row">
+                        <th>{{ 'app.materiel.table.fields.equipement'|trans }}</th>
+                        <th>{{ 'app.materiel.table.fields.modele'|trans }}</th>
+                        <th>{{ 'app.materiel.table.fields.quantite'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for materiel in list %}
+                        <tr role="row">
+                            <td>{{ materiel.equipement.nom }}</td>
+                            <td>{{ materiel.modele }}</td>
+                            <td>{{ materiel.quantite }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+{% endblock %}

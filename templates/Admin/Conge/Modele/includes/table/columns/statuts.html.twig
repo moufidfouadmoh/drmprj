@@ -1,0 +1,4 @@
+{% for statut in cmodele.statuts %}
+    {{ statut.nom }}
+    {% if not loop.last %},{% endif %}
+{% endfor %}

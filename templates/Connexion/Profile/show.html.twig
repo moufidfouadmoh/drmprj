@@ -1,0 +1,17 @@
+{% extends 'Global/base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4 offset-8">
+                <a class="btn btn-white btn-sm pull-right" href="{{ path('security_pdf') }}">
+                <span class="text-danger">
+                    <i class="fa fa-file-pdf-o"></i>
+                </span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            {% include 'Connexion/Profile/includes/profile.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

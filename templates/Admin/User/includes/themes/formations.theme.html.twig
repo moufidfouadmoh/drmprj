@@ -1,0 +1,155 @@
+{% block collection_widget %}
+    {% spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_widget(prototype)}) %}
+            {% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+        {% endif %}
+        {% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+        {% set attr = attr|merge({'data-allow-remove': allow_delete ? 1 : 0 }) %}
+        {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+
+        <fieldset>
+            <table {{ block('widget_attributes') }} class="table-striped">
+                {{ form_label(form) }}
+
+                <tbody>
+                {% for item in form %}
+                    {{ form_widget(item) }}
+                {% endfor %}
+                </tbody>
+            </table>
+        </fieldset>
+
+    {% endspaceless %}
+{% endblock %}
+{% block formation_form_widget %}
+    <tr {{ block('widget_attributes') }}>
+        <td>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_widget(form.adresse.etablissement,{
+                            'attr':{
+                                'class' : 'form-control etablissementahead',
+                                'placeholder': 'app.user.forms.fields.formations.etablissement'|trans
+                            }
+                        }) }}
+{#{{ form_label(form.adresse.etablissement) }}#}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_widget(form.cours,{
+                            'attr':{
+                                'class': 'form-control coursahead',
+                                'placeholder': 'app.user.forms.fields.formations.cours'|trans
+                            }
+                        }) }}
+{#{{ form_label(form.cours) }}#}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        {{ form_widget(form.diplome,{
+                            'attr':{
+                                'class': 'form-control diplomeahead',
+                                'placeholder': 'app.user.forms.fields.formations.diplome'|trans
+                            }
+                        }) }}
+{#{{ form_label(form.diplome) }}#}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                 <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.date) }}
+                        {{ form_widget(form.date,{
+                            'attr':{
+                                'class': 'js-datepicker form-control'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.mention) }}
+                        {{ form_widget(form.mention,{
+                            'attr':{
+                                'class': 'chosen-select'
+                            }
+                        }) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.adresse.pays.nom) }}
+                        {{ form_widget(form.adresse.pays.nom,{
+                            'attr':{
+                                'class':'chosen-select'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.adresse.ville) }}
+                        {{ form_widget(form.adresse.ville,{
+                            'attr':{
+                                'class': 'form-control',
+                                'autocomplete':'off'
+                            }
+                        }) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.adresse.postale) }}
+                        {{ form_widget(form.adresse.postale,{
+                            'attr':{
+                                'class': 'form-control',
+                                'autocomplete':'off'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.adresse.telephone) }}
+                        {{ form_widget(form.adresse.telephone,{
+                            'attr':{
+                                'class': 'form-control',
+                                'autocomplete':'off'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="md-form">
+                        {{ form_label(form.adresse.email) }}
+                        {{ form_widget(form.adresse.email,{
+                            'attr':{
+                                'class': 'form-control',
+                                'autocomplete':'off'
+                            }
+                        }) }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-">
+                    <a href="#" class="collection-remove btn btn-danger btn-sm" title="{{ 'delete.title' | trans }}">
+                        <span class="fa fa-trash"></span>
+                    </a>
+                    <a href="#" class="collection-add btn btn-default btn-sm" title="{{ 'add.title' | trans }}">
+                        <span class="fa fa-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>
+        {{ 'app.title'|trans }}  {% block title %}{% endblock %}
+    </title>
+    <link rel="icon" type="image/ico" href="{{ asset('ct.ico') }}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('build/css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
+    <style>
+        .btn.btn-action {
+            padding-right: 0.1rem;
+            padding-left: 0.1rem;
+            font-size: .60rem;
+        }
+    </style>
+    <!-- bootstrap-4-navbar -->
+    <link href="{{ asset('build/css/bootstrap-4-navbar.css') }}" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="{{ asset('build/js/jquery-3.3.1.min.js') }}"></script>
+    <!-- Your custom styles (optional) -->
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+
+{% include 'Global/includes/header.html.twig' %}
+
+<!--Main layout-->
+<main class="mt-5 pt-5">
+    {% block body %}{% endblock %}
+</main>
+<!--Main layout-->
+
+{% include 'Global/includes/footer.html.twig' %}
+
+<!-- SCRIPTS -->
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{{ asset('build/js/popper.min.js') }}"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{{ asset('build/js/bootstrap.js') }}"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="{{ asset('build/js/mdb.js') }}"></script>
+<!-- bootstrap-4-navbar.js -->
+<script type="text/javascript" src="{{ asset('build/js/bootstrap-4-navbar.js') }}"></script>
+<!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+</script>
+<script type="text/javascript" src="{{ asset('build/js/datatables.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/sgdatatables/js/pipeline.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script type="text/javascript" src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+
+</html>

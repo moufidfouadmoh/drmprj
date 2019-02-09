@@ -1,0 +1,233 @@
+<ul class="nav nav-tabs nav-justified md-tabs" id="tab_user_form" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="perso-tab-just" data-toggle="tab" href="#perso-just" role="tab" aria-controls="perso-just" aria-selected="true">
+            {{ 'app.user.forms.fields.base.label'|trans }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="formation-tab-just" data-toggle="tab" href="#formation-just" role="tab" aria-controls="formation-just" aria-selected="false">
+            {{ 'app.user.forms.fields.formations.label'|trans }}
+        </a>
+    </li>
+    {% if form.enabled is defined %}
+    <li class="nav-item">
+        <a class="nav-link" id="connexion-tab-just" data-toggle="tab" href="#connexion-just" role="tab" aria-controls="connexion-just" aria-selected="false">
+            {{ 'app.user.forms.fields.connexion.label'|trans }}
+        </a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+        <a class="nav-link" id="confirmation-tab-just" data-toggle="tab" href="#confirmation-just" role="tab" aria-controls="confirm-just" aria-selected="false">
+            {{ 'add.confirm'|trans }}
+        </a>
+    </li>
+</ul>
+{{ form_start(form, {
+    'attr':{
+        'class' : 'form form-horizontal form-bordered'
+    }
+}) }}
+<div class="tab-content card pt-5" id="tab_user_form">
+    <div class="tab-pane fade show active" id="perso-just" role="tabpanel" aria-labelledby="perso-tab-just">
+        <div class="card">
+            <div class="card-body px-lg-5 pt-0">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.username, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.username) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.nom, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.nom) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.prenom, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.prenom) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <br><br>
+                        {% for child in form.sexe %}
+                            <div class="custom-control custom-radio custom-control-inline">
+                                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                                {{ form_label(child,null,{
+                                    'label_attr' : {
+                                        'class' : 'custom-control-label'
+                                    }
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.datenaissance, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.datenaissance) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.lieunaissance, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.lieunaissance) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.email, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.email) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.adressepostale, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.adressepostale) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.telephone1, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.telephone1) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.telephone2, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.telephone2) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.telephone3, {
+                                'attr' : {
+                                    'class' : 'form-control',
+                                    'autocomplete' : 'off'
+                                }
+                            }) }}
+                            {{ form_label(form.telephone3) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="formation-just" role="tabpanel" aria-labelledby="formation-tab-just">
+        <div class="card">
+            <div class="card-body px-lg-5 pt-0">
+                {{ form_widget(form.formations) }}
+            </div>
+        </div>
+    </div>
+    {% if form.enabled is defined %}
+    <div class="tab-pane fade" id="connexion-just" role="tabpanel" aria-labelledby="connexion-tab-just">
+        <div class="card">
+            <div class="card-body px-lg-5 pt-0">
+                <div class="form-row">
+                    <div class="custom-control custom-checkbox custom-control-inline">
+                        {{ form_widget(form.enabled,{
+                            'attr' : {
+                                'class' : 'custom-control-input'
+                            }
+                        }) }}
+                        {{ form_label(form.enabled,null,{
+                            'label_attr' : {
+                                'class' : 'custom-control-label'
+                            }
+                        }) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    {#<div class="col">
+                        <div class="md-form">
+                            {{ form_widget(form.roles, {
+                                'attr' : {
+                                    'data-placeholder': 'Choisir'
+                                }
+                            }) }}
+
+                        </div>
+                    </div>#}
+                    <div class="col">
+                        <br><br>
+                        {% for child in form.roles %}
+                            <div class="custom-control custom-radio custom-control-inline">
+                                {{ form_widget(child, { 'attr': {'class': 'custom-control-input'}}) }}
+                                {{ form_label(child,null,{
+                                    'label_attr' : {
+                                        'class' : 'custom-control-label'
+                                    }
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="tab-pane fade" id="confirmation-just" role="tabpanel" aria-labelledby="confirmation-tab-just">
+        <div class="card">
+            <div class="card-body px-lg-5 pt-0">
+                <p>
+
+                </p>
+                <button class="btn btn-success btn-rounded mb-4 float-right">
+                    {{ 'save.title'|trans }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,151 @@
+{% extends 'Global/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        {{ 'app.cconsommation.show.title'|trans({
+                            '%modele%': cconsommation.cmodele.nom,
+                            '%user%': cconsommation.user | nom_prenom
+                        }) }}
+                    </h5>
+                    <div class="card-body px-lg-5 pt-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover record_properties">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{ 'app.cconsommation.show.fields.modele'| trans }}</th>
+                                        <td>{{ cconsommation.cmodele.nom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ 'app.cconsommation.show.fields.user'| trans }}</th>
+                                        <td>
+                                            {{ cconsommation.user | nom_prenom }}
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-secondary btn-sm pull-right pt-0 pb-0" data-toggle="modal" data-target="#detailModal{{ cconsommation.id }}">
+                                                <i class="fa fa-eye-slash"></i>
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="detailModal{{ cconsommation.id }}" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel{{ cconsommation.id }}" aria-hidden="true">
+                                                <div class="modal-dialog modal-frame modal-top" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="detailModalLabel{{ cconsommation.id }}">
+                                                                {{ cconsommation.user | nom_prenom }} {{ cconsommation.user.username }}
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans|ucfirst }}">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.statut'| trans }}</th>
+                                                                            <td>{{ cconsommation.situation.statut.nom }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.agence'| trans }}</th>
+                                                                            <td>{{ cconsommation.affectation.agenceDest.nom }}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.fonction'| trans }}</th>
+                                                                            <td>
+                                                                                {% if cconsommation.affectation.fonctionDest %}
+                                                                                    {{ cconsommation.affectation.fonctionDest.nom }}
+                                                                                {% endif %}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th scope="row">{{ 'app.user.show.tabs.base.fields.bureau'| trans }}</th>
+                                                                            <td>
+                                                                                {% if cconsommation.affectation.fonctionDest %}
+                                                                                    {{ cconsommation.affectation.fonctionDest.nom }}
+                                                                                {% endif %}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">{{ 'close'|trans|ucfirst }}</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{ 'app.cconsommation.show.fields.date.debut'| trans }}</th>
+                                        <td>{{ cconsommation.datedebut | localizeddate('full', 'none', 'fr' ) | ucfirst }}</td>
+                                    </tr>
+                                    {% if cconsommation.delaiaccorde %}
+                                        <tr>
+                                            <th scope="row">{{ 'app.cconsommation.show.fields.delai'| trans }}</th>
+                                            <td>{{ cconsommation.delaiaccorde | date_interval }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">{{ 'app.cconsommation.show.fields.date.fin'| trans }}</th>
+                                            <td>{{ cconsommation.fin | localizeddate('full', 'none', 'fr' ) | ucfirst }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if cconsommation.motif %}
+                                        <tr>
+                                            <th scope="row">{{ 'app.cconsommation.show.fields.date.fin'| trans }}</th>
+                                            <td>{{ froala_display(cconsommation.motif) }}</td>
+                                        </tr>
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        {% if is_granted('ROLE_EDIT_CONSOMMATION',cconsommation) %}
+                        <a class="btn btn-sm btn-default btn-rounded pull-right" href="{{ path('native.admin.consommation.edit',{
+                            'slug':cconsommation.slug
+                        }) }}">
+                            {{ 'edit.title'| trans }}
+                        </a>
+                        {% endif %}
+                        {% if is_granted('ROLE_DELETE_CONSOMMATION',cconsommation) %}
+                        <a class="btn btn-sm btn-danger btn-rounded" data-toggle="modal" data-target="#modal_delete_cconsommation_{{ cconsommation.id }}">
+                            {{ 'delete.title'|trans }}
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                        <div class="modal fade" id="modal_delete_cconsommation_{{ cconsommation.id }}" tabindex="-1" role="dialog" aria-labelledby="modal_delete_cconsommation_{{ cconsommation.id }}Title" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h5 class="modal-title w-100 font-weight-bold" id="modal_delete_cconsommation_{{ cconsommation.id }}Title">
+                                            {{ 'app.cconsommation.delete.modal.header'|trans }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="{{ 'close'|trans }}">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    {% set delete_form = form_delete(cconsommation.id,'native.admin.consommation.delete') %}
+                                    {{ form_start(delete_form) }}
+                                    <div class="modal-body mx-3">
+                                        {{ confirm_delete('app.cconsommation.delete.modal.entity' | trans({},'messages'),'') }}
+                                        {{ form_widget(delete_form) }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-sm btn-danger btn-rounded delete-link">{{ 'accept'|trans({},'messages') }}</button>
+                                        <button class="btn btn-sm btn-default" data-dismiss="modal">{{ 'refuse'|trans({},'messages') }}</button>
+                                    </div>
+                                    {{ form_end(delete_form) }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

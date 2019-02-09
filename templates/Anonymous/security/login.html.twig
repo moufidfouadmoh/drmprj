@@ -1,0 +1,24 @@
+{% extends 'Anonymous/base.html.twig' %}
+{% block title %}{{ 'login.title'|trans({},'security') }}{% endblock %}
+{% block body %}
+    <div class="modal-dialog text-center">
+        <div class="col-sm-9 main-section">
+            <div class="modal-content" style="border-radius: 10px;">
+                <div class="col-12 user-img">
+                    <img src="{{ asset('img/face.png') }}" alt="">
+                </div>
+                <div class="col-12 form-input">
+                    {% if error %}
+                        <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% include('Anonymous/security/login_content.html.twig') %}
+                </div>
+                <div class="col-12 forgot">
+                    <a href="{{ path('request_resetting') }}">
+                        {{ 'resetting.suggest.question'|trans({},'security') }}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

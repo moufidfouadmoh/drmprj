@@ -1,0 +1,58 @@
+{% extends 'Global/base.html.twig' %}
+{% block styles %}
+    <link rel="stylesheet" href="{{ asset('build/css/bootstrap-datetimepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/css/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/css/froala_editor.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/css/plugins/file.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="offset-1 col-10">
+                <div class="card">
+                    <h5 class="card-header light-blue lighten-1 white-text text-uppercase text-center">
+                        <i class="lnr lnr-license"></i>
+                        {{ 'app.situation.edit'|trans({
+                            '%user%':situation.user|nom_prenom
+                        }) }}
+                    </h5>
+                    <div class="card-content collpase show">
+                        {{ form_start(form, {
+                            'attr':{
+                                'class' : 'form form-horizontal form-bordered'
+                            }
+                        }) }}
+                        <div class="card-body px-lg-5 pt-0">
+                            {% include 'Admin/User/Actions/Situation/includes/_form.html.twig' %}
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success btn-rounded mb-4 float-right">
+                                {{ 'save.title'|trans }}
+                            </button>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('build/js/moment.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/fr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('build/js/chosen.jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/froala_editor.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/languages/fr.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/plugins/file.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/kmsfroalaeditor/froala_editor_2.9.1/js/plugins/lists.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#situation_form_statut').chosen();
+            $('#situation_form_date').datetimepicker({
+                locale: 'fr',
+                format: 'L'
+            });
+        })
+    </script>
+{% endblock %}

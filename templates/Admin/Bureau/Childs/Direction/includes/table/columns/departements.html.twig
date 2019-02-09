@@ -1,0 +1,9 @@
+{% if direction.departements is not empty %}
+    <ul>
+    {% for departement in direction.departements %}
+        <li>
+            {{ departement.nom }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
